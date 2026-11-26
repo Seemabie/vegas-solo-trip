@@ -223,6 +223,18 @@ body{font-family:"Bricolage Grotesque",system-ui,sans-serif;color:var(--sand);mi
 .obb{display:flex;gap:10px}
 .obb button{flex:1;padding:13px;border-radius:99px;font-family:"DM Mono",monospace;font-size:13px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted)}
 .obb .pri{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 22px rgba(255,61,139,.45)}
+.pill{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 14px;border-radius:99px;border:1px solid rgba(46,242,208,.4);background:rgba(46,242,208,.08);font-family:"DM Mono",monospace;font-size:12px;color:var(--teal);letter-spacing:.04em}
+.fares{background:linear-gradient(150deg,rgba(46,242,208,.12),rgba(255,255,255,.03));border:1px solid rgba(46,242,208,.35);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.fares h4{font-family:"Limelight",serif;font-size:21px;color:#fff;margin-bottom:4px}
+.fares>p{color:var(--muted);font-size:13px;margin-bottom:10px}
+.frow{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.frow b{font-weight:700}
+.frow small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.frow span{font-family:"DM Mono",monospace;color:var(--gold);white-space:nowrap;text-align:right;font-size:13px}
+.area{background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}
+.area .tag{display:inline-block;margin-bottom:6px}
+.area h5{font-size:16px;font-weight:800}
+.area>p{color:var(--muted);font-size:13px;line-height:1.45;margin:4px 0 8px}
 footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;padding:32px 0 8px}
 @media (max-width:420px){.idet{padding-left:14px}.itime{min-width:54px;font-size:11px}.code{font-size:26px}.pass .stub{width:80px}.pass::before,.pass::after{right:72px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -238,6 +250,7 @@ footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;paddi
       <div class="eyebrow" id="hello">Your solo escape</div>
       <h1 class="sign"><span>V</span><span class="b">E</span><span>G</span><span>A</span><span class="b">S</span></h1>
       <div class="script">Fri Nov 27 to Tue Dec 1</div>
+      <div class="pill">💸 Budget plan · about <b id="allin">$0</b> all in</div>
       <div class="count-label" id="cdLabel">WHEELS UP IN</div>
       <div class="count" id="cd">
         <div><strong id="cdD">0</strong><small>Days</small></div>
@@ -249,20 +262,20 @@ footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;paddi
     <div class="now" id="now"></div>
     <div class="quick">
       <button class="qc" data-go="guide"><div class="e">🧭</div><b>Guide</b><small>Everything, step by step</small></button>
-      <button class="qc" data-go="wallet"><div class="e">🎟️</div><b>Book</b><small>5 things to lock in</small></button>
-      <button class="qc" data-go="plan"><div class="e">🗓️</div><b>Plan</b><small>Day by day</small></button>
+      <button class="qc" data-go="wallet"><div class="e">🎟️</div><b>Book</b><small>Hotel, tour, spa</small></button>
+      <button class="qc" data-go="guide" data-chap="3"><div class="e">🚌</div><b>Get around</b><small>Buses, fares, easy routes</small></button>
     </div>
     <div class="pass">
       <div class="main">
-        <h4>Suggested out · Fri Nov 27 · American</h4>
-        <div class="leg"><span class="code">JFK</span><span class="plane"></span><span class="code">LAS</span></div>
-        <div class="meta"><span>7:59 AM ET</span><span>Nonstop</span><span>11:00 AM PT</span></div>
+        <h4>Your flight out · Fri Nov 27</h4>
+        <div class="leg"><span class="code">NYC</span><span class="plane"></span><span class="code">LAS</span></div>
+        <div class="meta"><span>Departs 7:59 AM ET</span><span>Lands ~11 AM PT</span></div>
         <div class="sep"></div>
-        <h4>Suggested back · Tue Dec 1 · American</h4>
-        <div class="leg"><span class="code">LAS</span><span class="plane"></span><span class="code">JFK</span></div>
-        <div class="meta"><span>12:56 PM PT</span><span>Nonstop</span><span>9:00 PM ET</span></div>
+        <h4>Your flight home · Tue Dec 1</h4>
+        <div class="leg"><span class="code">LAS</span><span class="plane"></span><span class="code">NYC</span></div>
+        <div class="meta"><span>Departs 12:00 PM PT</span><span>Lands evening ET</span></div>
       </div>
-      <div class="stub"><small>ROUND TRIP</small><div class="price">$437</div><small>Google Flights<br>Nov 26</small></div>
+      <div class="stub"><small>FLIGHTS</small><div class="price">✓</div><small>Check your<br>boarding pass</small></div>
     </div>
     <div class="wx" id="wx"></div>
   </section>
@@ -280,6 +293,15 @@ footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;paddi
       <div class="ring"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="33"/><circle class="fg" id="ringfg" cx="40" cy="40" r="33" stroke-dasharray="207.3" stroke-dashoffset="207.3"/></svg><b id="ringtxt">0/0</b></div>
       <p class="lede" style="margin:0">Short chapters, read in any order. Each one takes about a minute. Tick it off when you are done.</p>
     </div>
+    <div class="fares">
+      <h4>🚌 Bus cheat sheet</h4>
+      <p>Buy passes in the rideRTC app before you board. Fares as of late 2026.</p>
+      <div class="frow"><div><b>Deuce</b><small>Double decker, whole Strip to Fremont, 24/7</small></div><span>$4 ride<br>$8 / 24 hrs</span></div>
+      <div class="frow"><div><b>SDX express</b><small>Faster, fewer stops, Strip to downtown</small></div><span>same pass</span></div>
+      <div class="frow"><div><b>3 day pass</b><small>Works on Deuce, SDX and all RTC buses</small></div><span>$20</span></div>
+      <div class="frow"><div><b>Monorail</b><small>East side, SAHARA to MGM Grand, not 24/7</small></div><span>$5.50 online<br>$13.45 / day</span></div>
+      <div class="frow"><div><b>Free trams</b><small>Excalibur, Luxor, Mandalay Bay · Park MGM, Aria, Bellagio</small></div><span>free</span></div>
+    </div>
     <div id="chapters"></div>
     <div class="sos"><div class="e">🆘</div><div><b>Emergency: call 911</b><p>Casino security staff are on every floor and can help with anything. Save your hotel's front desk number in your phone on day one.</p></div></div>
   </section>
@@ -287,7 +309,7 @@ footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;paddi
   <section id="explore" class="panel">
     <h2 class="h2">Explore <em>More</em></h2>
     <p class="lede">Extras if you have energy left. Nothing here is required.</p>
-    <div class="seg" id="seg"><button class="on" data-s="tours">Tours</button><button data-s="shows">Shows</button><button data-s="lights">Lights</button></div>
+    <div class="seg" id="seg"><button class="on" data-s="tours">Tours</button><button data-s="spa">Spa</button><button data-s="free">Free</button><button data-s="shows">Shows</button><button data-s="lights">Lights</button></div>
     <div id="exview"></div>
   </section>
 
@@ -326,7 +348,7 @@ if(who){$("hello").textContent=who+"'s solo escape";document.title=who+"'s Vegas
 const WX=[["FRI","☁️",69,45,""],["SAT","⛅",68,49,""],["SUN","☀️",68,50,""],["MON","☁️",67,53,""],["TUE","🌧️",60,52,"rain"]];
 $("wx").innerHTML=WX.map(w=>`<div class="${w[4]}"><div class="d">${w[0]}</div><div class="i">${w[1]}</div><div class="t">${w[2]}°</div><div class="l">${w[3]}°${w[4]?" · 75%":""}</div></div>`).join("");
 
-const DEP=new Date("2026-11-27T07:59:00-05:00"),RET=new Date("2026-12-01T21:00:00-05:00");
+const DEP=new Date("2026-11-27T07:59:00-05:00"),RET=new Date("2026-12-01T12:00:00-08:00");
 function tick(){
   const now=new Date();let target=DEP,label="WHEELS UP IN";
   if(now>=DEP&&now<RET){target=RET;label="VEGAS TIME LEFT"}
@@ -340,45 +362,39 @@ function tick(){
 const DATES={fri:"2026-11-27",sat:"2026-11-28",sun:"2026-11-29",mon:"2026-11-30",tue:"2026-12-01"};
 const DAYS=[
 {id:"fri",dw:"FRI",dn:"27",title:"Arrive & Glow",sub:"69° · cloudy · sunset 4:30",items:[
- {t:"5:30 AM",z:"E",h:"Head to JFK",d:"American flies from Terminal 8.",how:["Rideshare, or the AirTrain from Jamaica station.","Keep your ID handy and aim to be through security by 6:45.","Grab breakfast after security. It is a 6 hour flight."]},
- {t:"7:59 AM",z:"E",h:"Fly to Las Vegas",d:"Nonstop. Lands 11:00 AM Vegas time.",how:["Check in on the American app 24 hours before.","Vegas is 3 hours behind New York. Change your watch when you land."],tags:["book"]},
- {t:"11:15 AM",h:"Land and ride to the hotel",d:"Terminal 1, about 20 minutes to the Strip.",how:["Follow signs for Ground Transportation, then Rideshare.","Match the license plate in the app before you get in.","If the room is not ready, the bell desk will hold your bags for free."]},
- {t:"12:30 PM",h:"Tacos El Gordo",d:"Cheap, famous, perfect first bite.",how:["Order the adobada tacos (spit roasted pork) or carne asada.","It is on the Strip across from Encore. The line moves fast."],tags:["free"]},
- {t:"2:00 PM",h:"Check in and nap",d:"You have been up since 4:30 AM New York time.",how:["Politely ask for a high floor with a Strip view. It never hurts.","Set an alarm for 3:15 and rest."]},
- {t:"3:45 PM",h:"Bellagio Conservatory",d:"Free holiday display, then the fountains.",how:["Walk in through the Bellagio lobby with the glass flower ceiling. The Conservatory is right behind it.","This year's display is called Postcards from Christmas.","Step outside to the lake railing. Fountain shows run every 15 to 30 minutes."],tags:["free"]},
- {t:"4:30 PM",h:"Sunset at the Eiffel Tower",d:"Paris Las Vegas, across the street.",how:["Buy tickets at the base inside Paris Las Vegas.","Go up 15 minutes before sunset and watch the Strip switch on."]},
- {t:"6:15 PM",h:"Easy dinner",d:"Eataly at Park MGM or Wicked Spoon at the Cosmopolitan.",how:["Both are relaxed for solo dining. Counter seats are the best seats.","The Cosmopolitan's Chandelier Bar is worth a look on the way."]},
- {t:"8:00 PM",h:"Big night: pick one show",d:"Eagles at Sphere, LISA, or O by Cirque.",how:["Eagles at Sphere start 8:30 PM.","LISA's VIVA LA LISA is 8:00 PM at Caesars Palace. Resale only now.","O at Bellagio is the classic Cirque water show. Check showtimes.","Buy from the official box office or Ticketmaster, not random resellers."],tags:["book","splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]}
-],swaps:[["Black Friday clubbing","Marquee, OMNIA and Zouk all have holiday headliners. Get on a free guest list during the day.",""]]},
-{id:"sat",dw:"SAT",dn:"28",title:"Fun Day",sub:"68° · partly cloudy",items:[
- {t:"9:30 AM",h:"Brunch at the Peppermill",d:"Neon diner classic since 1972.",how:["Huge portions. One plate is plenty.","Peek into the fireside lounge on the way out."]},
- {t:"11:00 AM",h:"Zipline + High Roller",d:"Fly LINQ zipline, then the giant wheel.",how:["Fly LINQ is a seated zipline 12 stories up, from about $44.","Then ride the High Roller, the 550 ft observation wheel next door.","Daytime is quieter and the views reach the mountains."],link:["https://www.google.com/search?q=Fly+LINQ+zipline+tickets","Find tickets"]},
- {t:"1:00 PM",h:"Golden Knights hockey",d:"Vs Montreal Canadiens at T Mobile Arena.",how:["The pregame show is full Vegas theater, even if you do not follow hockey.","Single seats are easy to find and often cheaper.","Arrive 30 minutes early for the opening show."],tags:["book"],link:["https://www.nhl.com/goldenknights/tickets/single-game","Tickets"]},
- {t:"4:30 PM",h:"AREA15 & Omega Mart",d:"Trippy art world, 10 minutes off the Strip.",how:["Omega Mart by Meow Wolf looks like a supermarket and turns into another universe. About $46 to $59.","Give yourself 2 hours. Open every door."],tags:["book"],link:["https://area15.com","AREA15"]},
- {t:"7:00 PM",h:"Fremont Street",d:"Old Vegas under the light canopy.",how:["Rideshare to the Fremont Street Experience downtown.","Light shows play on the giant canopy screen through the evening.","Brave? Ride SlotZilla, the zipline right under the screen."],tags:["free"],link:["https://vegasexperience.com","Fremont Street"]},
- {t:"8:30 PM",h:"Dinner downtown",d:"Circa, Golden Nugget or the Arts District.",how:["The Arts District is a short ride and full of local spots.","Head back to the Strip whenever you are ready."]}
-],swaps:[["UNLV vs Nevada football","6:00 PM at Allegiant Stadium. Battle for the Fremont Cannon. From about $45.","https://www.allegiantstadium.com"],["LIV at Fontainebleau","Sidepiece headlines at 10:30 PM. Dress up; no athletic wear.",""],["Neon Museum at night","Retired casino signs glowing in the dark. Great photos.","https://www.neonmuseum.org"]]},
-{id:"sun",dw:"SUN",dn:"29",title:"Grand Canyon",sub:"68° · clear · best flying weather",items:[
- {t:"7:30 AM",h:"Helicopter to the Grand Canyon",d:"The once in a lifetime morning.",how:["Book a morning West Rim flight with hotel pickup. Papillon and Maverick are the big names. From about $439.","You fly over Hoover Dam and Lake Mead, land on the canyon floor, and toast with champagne.","Wear layers and closed shoes. Bring your ID; they weigh passengers for balance.","Back by early afternoon."],tags:["book","splurge"],link:["https://papillon.com","See tours"]},
- {t:"1:00 PM",h:"Late lunch: Bacchanal Buffet",d:"Caesars Palace. Go hungry.",how:["Weekend lines peak at brunch, so late lunch is the sweet spot."]},
- {t:"2:30 PM",h:"Spa reset",d:"Rest after an early start.",how:["Outdoor pools are mostly seasonal now. A spa day pass or your hotel hot tub is the move."]},
- {t:"5:00 PM",h:"Cactus Garden Lights",d:"Over a million lights in Henderson.",how:["Ethel M Chocolates' Holiday Cactus Garden, 20 minutes by rideshare.","Grab hot chocolate and walk the garden.","Pick up chocolates as gifts while you are there."],tags:["free"],link:["https://www.ethelm.com","Ethel M"]},
- {t:"8:30 PM",h:"Absinthe at Caesars Palace",d:"Hilarious, cheeky circus up close.",how:["Adults only and very funny. Acrobats perform inches from your seat.","Check the late showtimes and book a seat in the first few rows if you can."],tags:["book"]}
-],swaps:[["Budget Grand Canyon: West Rim bus tour","Full day, about 11 hours, with a Hoover Dam photo stop and Skywalk option. Roughly $150 to $300.","https://www.google.com/search?q=Grand+Canyon+West+Rim+bus+tour+from+Las+Vegas"],["Raiders on Sunday Night Football","5:20 PM. They play away, so big sportsbooks like Circa throw the party.",""]]},
-{id:"mon",dw:"MON",dn:"30",title:"Desert & Sphere",sub:"67° · cloudy",items:[
- {t:"8:00 AM",h:"Pick up a one day rental car",d:"Unlocks the desert on your own time.",how:["Book online for pickup at the airport or a Strip hotel desk.","Not driving? Swap in a small group Red Rock tour instead."],tags:["book"]},
- {t:"8:30 AM",h:"Red Rock Canyon",d:"Red cliffs, 20 minutes from the Strip.",how:["A timed entry reservation is required from 8 AM to 5 PM. Book on recreation.gov.","Drive the 13 mile scenic loop. Stop at Calico Hills for the red rocks.","Easy hike: Calico Tanks, a short scramble to a hidden pool with a Strip view."],tags:["book"],link:["https://www.recreation.gov/timed-entry/10075177","Reserve entry"]},
- {t:"12:30 PM",h:"Lunch in Summerlin",d:"Red Rock Casino or Downtown Summerlin.",how:["Both are right on the drive back."]},
- {t:"1:45 PM",h:"Hoover Dam",d:"Walk the dam and the bridge above it.",how:["Park in the Nevada side garage ($10).","Walk across the top of the dam, then the Memorial Bridge 900 ft above the river.","Optional Power Plant tour is $15. The visitor center is open 9 to 5."],link:["https://www.usbr.gov/lc/hooverdam/","Hoover Dam info"]},
- {t:"5:00 PM",h:"Return the car, freshen up",d:"A big tech conference starts today.",how:["AWS re:Invent brings about 60,000 people. Leave extra time around the Venetian."]},
- {t:"7:00 PM",h:"The Wizard of Oz at Sphere",d:"The classic on a 16K wraparound screen.",how:["4D effects, huge sound. Seats from about $114 to $145.","Arrive 30 minutes early to see the Sphere lobby."],tags:["book","splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]},
- {t:"9:30 PM",h:"Last night toast",d:"A rooftop, a speakeasy or the Chandelier Bar.",how:["Last night in Vegas. Pack before you go out."]}
-],swaps:[["Glittering Lights drive thru","6 million lights on a 3 mile route at the Speedway, if you keep the car tonight.","https://www.lvms.com"]]},
-{id:"tue",dw:"TUE",dn:"1",title:"Slow Morning, Home",sub:"60° · rain likely",items:[
- {t:"8:30 AM",h:"Slow breakfast",d:"Rain is likely, so stay under a roof.",how:["Charge your phone and download your boarding pass."]},
- {t:"9:30 AM",h:"Indoor stroll",d:"Venetian canals or the Forum Shops.",how:["The Venetian has painted skies and gondolas. The Forum Shops at Caesars are great for last gifts."],tags:["free"]},
- {t:"10:45 AM",h:"Check out, ride to LAS",d:"Terminal 1. Arrive 2 hours early.",how:["Check out on the hotel app to skip the line.","Rideshare drop off is right at departures."]},
- {t:"12:56 PM",h:"Fly home",d:"Nonstop, lands JFK 9:00 PM.",how:["Text the people who love you that you are on your way."],tags:["book"]}
+ {t:"5:30 AM",z:"E",h:"Head to the airport",d:"Your flight leaves at 7:59 AM.",how:["Check your boarding pass for the airport and terminal. American's 7:59 AM nonstop leaves from JFK Terminal 8.","Keep your ID handy and aim to be through security by 6:45.","Grab breakfast after security. It is about a 6 hour flight."]},
+ {t:"7:59 AM",z:"E",h:"Fly to Las Vegas",d:"Lands around 11:00 AM Vegas time.",how:["Check in on your airline's app 24 hours before.","Vegas is 3 hours behind New York. Change your watch when you land."]},
+ {t:"11:15 AM",h:"Airport to your hotel",d:"Easy: rideshare. Cheapest: the bus.",how:["Easiest: follow Rideshare signs from baggage claim. Usually around $25 to $40 to the Strip or downtown.","Cheapest: buses leave from Terminal 1, Level Zero. The CX runs to the center Strip and downtown. Buy an $8 24 hour pass in the rideRTC app first.","Early? The bell desk holds bags for free."],tags:["free"],link:["https://www.harryreidairport.com/busses-shuttles/public-bus","Airport bus info"]},
+ {t:"12:30 PM",h:"Tacos El Gordo",d:"Cheap, famous, perfect first bite.",how:["Order the adobada tacos (spit roasted pork).","Strip location across from Encore. There is also one downtown near Fremont."],tags:["free"]},
+ {t:"2:00 PM",h:"Check in and nap",d:"You have been up since 4:30 AM New York time.",how:["Politely ask for a high floor. It never hurts.","Set an alarm for 3:15 and rest."]},
+ {t:"3:45 PM",h:"Bellagio Conservatory",d:"Free holiday display, then the fountains.",how:["Walk in through the Bellagio lobby with the glass flower ceiling. The Conservatory is right behind it.","This year's display is Postcards from Christmas.","Step outside to the lake railing. Fountain shows run every 15 to 30 minutes."],tags:["free"]},
+ {t:"4:30 PM",h:"Free sunset Strip walk",d:"Paris, the Cosmopolitan, then the Venetian.",how:["Walk north from Bellagio as the lights switch on.","Peek into the Cosmopolitan's Chandelier Bar, then the Venetian's painted sky canals.","Tired? Hop on the Deuce bus. A 2 hour pass is $6."],tags:["free"]},
+ {t:"6:30 PM",h:"Cheap dinner",d:"Food halls beat fancy restaurants for solo.",how:["Try the food hall at the Venetian or Eataly at Park MGM.","Counter seats are perfect for solo dining."]},
+ {t:"8:00 PM",h:"Night in or one big show",d:"Rest up, or splurge on a headliner.",how:["Budget move: early night. Tomorrow is a big day.","Splurge options tonight: Eagles at Sphere (8:30 PM), LISA at Caesars (8:00 PM, resale only) or O at Bellagio.","Buy only from the box office or Ticketmaster."],tags:["splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]}
+],swaps:[["Black Friday clubbing","Marquee, OMNIA and Zouk run holiday headliners. Free guest lists open during the day.",""]]},
+{id:"sat",dw:"SAT",dn:"28",title:"Cheap Fun Day",sub:"68° · partly cloudy · one $8 bus pass",items:[
+ {t:"9:30 AM",h:"Brunch at the Peppermill",d:"Neon diner classic since 1972.",how:["Huge portions. One plate is plenty, maybe even for two meals.","Buy today's $8 Deuce pass in the rideRTC app. It covers every ride until tomorrow morning."]},
+ {t:"10:30 AM",h:"Grab a half price show",d:"Tix4Vegas booths sell same day seats.",how:["Visit a Tix4Vegas booth (formerly Tix4Tonight) on the Strip, such as the Fashion Show Mall or the Grand Bazaar Shops.","Same day tickets are often 25 to 50% off. Pick a show for tonight.","Popular picks that sometimes show up: comedy clubs, magic shows, Blue Man Group."],tags:["free"],link:["https://www.google.com/search?q=Tix4Vegas+half+price+show+tickets+Las+Vegas","Find booths"]},
+ {t:"12:00 PM",h:"Free LINQ stroll",d:"Flamingo wildlife habitat, then the Promenade.",how:["The Flamingo hotel has a free garden with real flamingos and pelicans.","Walk the LINQ Promenade next door. The High Roller wheel and Fly LINQ zipline (from about $44) are optional extras."],tags:["free"]},
+ {t:"2:30 PM",h:"AREA15 & Omega Mart",d:"Trippy art world, 10 minutes off the Strip.",how:["Take a short rideshare. Omega Mart is about $46 to $59.","Walking around AREA15 itself is free if you skip the ticket."],tags:["book"],link:["https://area15.com","AREA15"]},
+ {t:"7:00 PM",h:"Your half price show",d:"Whatever you picked this morning.",how:["Arrive 30 minutes early. Swap your voucher at the box office if needed."]},
+ {t:"9:30 PM",h:"Fremont Street lights",d:"Free light shows under the canopy.",how:["Ride the Deuce north to Fremont Street. Your pass covers it.","Light shows play on the giant canopy screen through the evening. Street performers everywhere.","Stay under the main canopy. Take a rideshare back late at night."],tags:["free"],link:["https://vegasexperience.com","Fremont Street"]}
+],swaps:[["Golden Knights hockey, 1:00 PM","Vs Montreal at T Mobile Arena. Single seats are often cheaper.","https://www.nhl.com/goldenknights/tickets/single-game"],["UNLV vs Nevada football, 6:00 PM","Allegiant Stadium, from about $45.","https://www.allegiantstadium.com"]]},
+{id:"sun",dw:"SUN",dn:"29",title:"Grand Canyon Day",sub:"68° · clear skies",items:[
+ {t:"6:30 AM",h:"Grand Canyon bus tour",d:"Hotel pickup. The best value way to see it.",how:["Book a West Rim bus tour with hotel pickup. Prices run around $75 to $135.","Most include a Hoover Dam photo stop, Eagle Point and Guano Point. The glass Skywalk costs extra.","It is a long day, about 11 to 12 hours. Bring snacks, water, layers and ID.","Pickups often happen at a set spot in the hotel. Read your confirmation carefully."],tags:["book"],link:["https://www.travelocity.com/things-to-do/west-rim-bus-tour-with-guided-walking-tour-and-hoover-dam-photo-stop.a523459.activity-details","See a top rated tour"]},
+ {t:"7:00 PM",h:"Easy dinner, early night",d:"You will be tired in the best way.",how:["Grab something close to your hotel. Tacos El Gordo is open late.","Lay out tomorrow's clothes. Pickup is in the morning."]}
+],swaps:[["Splurge: Grand Canyon helicopter","Fly over Hoover Dam, land on the canyon floor, back by early afternoon. From about $439.","https://papillon.com"],["Raiders on Sunday Night Football","5:20 PM. Watch free at a big sportsbook like Circa.",""]]},
+{id:"mon",dw:"MON",dn:"30",title:"Spa Day & Sphere",sub:"67° · cloudy · perfect spa weather",items:[
+ {t:"9:00 AM",h:"Slow breakfast",d:"No alarm today. This day is all yours.",how:["Eat something light before the spa. Bring only your phone and ID; robes, towels and slippers are provided."]},
+ {t:"10:00 AM",h:"Spa day",d:"Steam, saunas, hot pools, maybe a massage.",how:["Budget pick: Imperial Spa, a Korean style spa off the Strip with jade, salt and clay saunas and hot baths. Day admission is around $45 to $55, with a women's side. Add a body scrub if you like.","Splurge pick: Qua Baths & Spa at Caesars Palace, with Roman baths and a snowy Arctic Ice Room. A spa pass is around $172, or a massage plus pass from about $230. Check in by 2 PM.","Easy middle: ResortPass sells hotel spa passes from about $40 to $80.","Book any massage ahead and arrive an hour early to enjoy the facilities first."],tags:["book"],link:["https://www.resortpass.com/s/us/nv/las-vegas/spa","Compare spa passes"]},
+ {t:"3:30 PM",h:"Nap and glow up",d:"Rest, then get ready for tonight.",how:["Drink lots of water after the saunas.","Grab an easy early dinner near your hotel around 5:30."]},
+ {t:"7:00 PM",h:"The Wizard of Oz at Sphere",d:"The one splurge worth it.",how:["The classic on a 16K wraparound screen with 4D effects. Seats from about $114 to $145.","Walk over from the Venetian. Arrive 30 minutes early."],tags:["book","splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]}
+],swaps:[["Hoover Dam half day tour","Your Grand Canyon bus tour usually includes a Hoover Dam photo stop. Want more? Half day tours with hotel pickup start around $65.","https://www.expedia.com/things-to-do/hoover-dam-express-tour.a307674.activity-details"],["Free: Welcome to Las Vegas sign","The classic photo at the south end of the Strip.",""],["Free: Ethel M Cactus Garden Lights","Over a million lights in Henderson, 20 minutes by rideshare.","https://www.ethelm.com"]]},
+{id:"tue",dw:"TUE",dn:"1",title:"Slow Morning, Home",sub:"60° · rain likely · flight at noon",items:[
+ {t:"7:45 AM",h:"Breakfast and pack",d:"Rain is likely, so keep it cozy.",how:["Charge your phone and download your boarding pass.","Check which terminal your airline uses at LAS (Terminal 1 or 3)."]},
+ {t:"9:00 AM",h:"Check out",d:"Use the hotel app to skip the line.",how:["Do one last sweep of the room, the safe and the chargers."]},
+ {t:"9:30 AM",h:"Ride to the airport",d:"Be at LAS by 10 AM for a noon flight.",how:["Rideshare is easiest with bags, about 15 to 25 minutes.","Holiday weekend return traffic can mean longer security lines."]},
+ {t:"12:00 PM",h:"Fly home",d:"Lands in New York in the evening.",how:["Text the people who love you that you are on your way."]}
 ],swaps:[]}
 ];
 const tagLabel={book:"Book ahead",free:"Free or cheap",splurge:"Splurge"};
@@ -407,27 +423,33 @@ function renderNow(){
   const now=new Date();let cur=null,nxt=null;
   for(let i=0;i<FLAT.length;i++){if(FLAT[i].at<=now)cur=i;else{nxt=i;break}}
   let html="";
-  if(cur===null){const f=FLAT[0];html=`<div class="lbl"><i></i>YOUR FIRST STEP</div><h3>${f.it.h}</h3><p>Friday at ${f.it.t} ET. ${f.it.d}</p><div class="next">Before then: open the <b>Book</b> tab and lock in the 5 things that sell out.</div><button class="go" data-open="${f.day}|${f.k}">See how ›</button>`}
-  else if(now>RET){html=`<div class="lbl"><i></i>TRIP COMPLETE</div><h3>Welcome home ✨</h3><p>Hope Vegas was everything. Rest up.</p>`}
+  if(cur===null){const f=FLAT[0];html=`<div class="lbl"><i></i>YOUR FIRST STEP</div><h3>${f.it.h}</h3><p>Friday at ${f.it.t} ET. ${f.it.d}</p><div class="next">Before then: open the <b>Book</b> tab and lock in your hotel, tour and spa.</div><button class="go" data-open="${f.day}|${f.k}">See how ›</button>`}
+  else if(now-RET>6*36e5){html=`<div class="lbl"><i></i>TRIP COMPLETE</div><h3>Welcome home ✨</h3><p>Hope Vegas was everything. Rest up.</p>`}
   else{const c=FLAT[cur];html=`<div class="lbl"><i></i>RIGHT NOW</div><h3>${c.it.h}</h3><p>${c.it.d}</p>${nxt!==null?`<div class="next">Up next at <b>${FLAT[nxt].it.t}</b>: ${FLAT[nxt].it.h}</div>`:""}<button class="go" data-open="${c.day}|${c.k}">How to do it ›</button>`}
   $("now").innerHTML=html;
   const g=document.querySelector("#now .go");if(g)g.onclick=()=>{const p=g.dataset.open.split("|");curDay=p[0];openKey=p[0]+p[1];showTab("plan");renderDays();renderDay()};
 }
 
-const HOT=[["SAHARA Las Vegas","8.4","North Strip, monorail stop out front. Best value.","$555","sahara-lasvegas-hotel-casino"],["Excalibur","7.6","South Strip. Cheapest real Strip address.","$343","excalibur"],["Luxor","7.3","The pyramid, free tram to Mandalay Bay.","$429","luxor"],["The LINQ","7.7","Dead center, steps from the zipline and wheel.","$843","the-linq-and-casino"],["Hilton at Resorts World","8.6","Newest and polished, north Strip.","$906","las-vegas-hilton-at-resorts-world"]];
-const hotelsHTML=`<div class="hotels">${HOT.map(h=>`<a class="hotel" target="_blank" rel="noopener" href="https://www.booking.com/hotel/us/${h[4]}.html?checkin=2026-11-27&checkout=2026-12-01&group_adults=1&no_rooms=1&selected_currency=USD"><div><h5>${h[0]}</h5><p><span class="score">${h[1]}</span>${h[2]}</p></div><div class="hp"><b>${h[3]}</b><small>4 NIGHTS</small></div></a>`).join("")}</div>`;
+const AREAS=[
+ ["Easiest for a first solo trip","South Strip","Right on the Strip, close to the airport, free tram between three hotels, busy and well lit.",[["Excalibur","7.6","$343","excalibur"],["Luxor","7.3","$429","luxor"]]],
+ ["Best value","Downtown · Fremont Street","Cheapest well rated rooms, fun at night. The Deuce or SDX reaches the Strip in about 20 to 30 minutes.",[["Four Queens","8.2","$314","four-queens-and-casino"],["Downtown Grand","8.1","$349","downtown-grand-an-ascend-collection-member"],["The D","8.1","$356","the-d-las-vegas"]]],
+ ["Cheapest on the Strip","North Strip","Quieter end with a Deuce stop out front and the STRAT tower views.",[["The STRAT","7.1","$289","stratosphere-casino"],["SAHARA","8.4","$555","sahara-lasvegas-hotel-casino"]]]
+];
+const hotelsHTML=AREAS.map(a=>`<div class="area"><span class="tag t-free">${a[0]}</span><h5>${a[1]}</h5><p>${a[2]}</p><div class="hotels">${a[3].map(h=>`<a class="hotel" target="_blank" rel="noopener" href="https://www.booking.com/hotel/us/${h[3]}.html?checkin=2026-11-27&checkout=2026-12-01&group_adults=1&no_rooms=1&selected_currency=USD"><div><h5>${h[0]}</h5><p><span class="score">${h[1]}</span>Booking.com rating</p></div><div class="hp"><b>${h[2]}</b><small>4 NIGHTS</small></div></a>`).join("")}</div></div>`).join("");
 const CHAP=[
- ["✈️","Before you fly","Check in, ID, what to pack",["<b>Check in</b> on the American app 24 hours before the flight.","<b>Pack layers.</b> Days are high 60s, nights drop to the mid 40s, and Tuesday looks rainy.","<b>Shoes:</b> comfy walking shoes for the day (10 miles on the Strip is normal), sneakers for Red Rock, something cute for nights.","<b>Bring:</b> ID, one card plus a backup, a little cash for tips, a power bank, sunglasses, SPF and lip balm. The desert air is very dry.","Download your boarding pass and hotel confirmation so they work offline."]],
- ["🛬","Landing at LAS","From the gate to your hotel",["You land at <b>Terminal 1</b>. Follow signs to Baggage Claim, then <b>Ground Transportation</b>.","For Uber or Lyft, follow the <b>Rideshare</b> signs to the pickup zone. Taxis wait at the taxi line outside baggage claim.","Always match the <b>license plate and driver name</b> before getting in.","Most Strip hotels are 15 to 25 minutes away. Early? The bell desk holds bags for free."]],
- ["🏨","Where to stay","Picks with prices for your dates",["Booking.com totals for 4 nights, 1 adult, checked Nov 26. Resort fees are usually added on top.","Book soon. Monday night rates jump because a 60,000 person tech conference starts that day.",hotelsHTML]],
- ["🚕","Getting around","Walking, monorail, rideshare",["<b>The Strip is bigger than it looks.</b> Two hotels that seem next door can be a 20 minute walk.","<b>Monorail:</b> runs on the east side from SAHARA to MGM Grand. Easy and safe.","<b>The Deuce bus</b> runs up and down the Strip 24/7.","<b>Rideshare:</b> every casino has a marked rideshare pickup area, usually by the garage. Follow the signs inside."]],
- ["💵","Money & tipping","What to tip, resort fees, casino basics",["<b>Resort fees</b> are added per night at most Strip hotels. Already in your budget.","<b>Tipping:</b> bartenders $1 to $2 a drink, housekeeping $3 to $5 a night, rideshare about 15 to 20%, restaurants 18 to 20%.","<b>Casino:</b> sign up for the free players card at your hotel. It can unlock dining and show discounts.","Set a daily gambling limit, carry only that in cash, and leave cards in the room safe."]],
- ["🎟️","Shows & tickets","Buying safely, arriving right",["Buy from the <b>official box office, venue website or Ticketmaster</b>. Avoid strangers selling tickets on the street.","Arrive <b>30 minutes early</b>. Big venues have security lines.","Check each venue's bag policy. A small bag is always safest.","Last minute? Ask at the box office in person. Single seats often turn up."]],
- ["🏜️","Day trips","Grand Canyon, Red Rock, Hoover",["<b>Grand Canyon helicopter:</b> book a morning West Rim flight with hotel pickup. Wear layers and closed shoes and bring ID.","<b>Red Rock:</b> needs a timed entry reservation on recreation.gov for 8 AM to 5 PM. The scenic drive closes around 5 PM in winter.","<b>Hoover Dam:</b> the visitor center is open 9 to 5. Parking is $10 and the Power Plant tour is $15.","Carry water on every desert outing, even when it feels cool."]],
- ["👗","What to wear","Day, night, desert",["<b>Daytime:</b> jeans or casual layers and a light jacket.","<b>Nights out:</b> clubs enforce dress codes, so dress up and skip athletic wear. Fold flats into your bag for the walk home.","<b>Desert days:</b> sneakers, sunglasses, a hat and a warm layer for the morning.","<b>Shows:</b> smart casual is perfect everywhere."]],
- ["🛡️","Solo & safe","Simple habits that make it easy",["Share your <b>live location</b> with a friend for the whole trip.","Keep your drink in your hand and watch it being made. Never leave it alone.","Do not say your room number out loud. Ask the front desk for a new key if you lose one.","Stick to busy, lit areas at night. The Strip and Fremont Street are full of people and security.","Casino security staff are everywhere and happy to help. In an emergency, call 911."]],
- ["🍽️","Eat well","Six easy favorites",["<b>Tacos El Gordo:</b> cheap, famous, great late at night.","<b>Peppermill:</b> neon diner since 1972, big portions.","<b>Lotus of Siam:</b> legendary northern Thai. Try the khao soi.","<b>Bacchanal Buffet:</b> Caesars Palace, the most famous buffet in town.","<b>Eataly:</b> Park MGM, easy solo counter seats.","<b>Esther's Kitchen:</b> Arts District favorite for pasta."]],
- ["🏠","Heading home","Checkout and the airport",["Check out on your hotel app to skip the line. The bell desk can hold bags if you want a last wander.","Leave for <b>LAS Terminal 1</b> at least 2 hours before your flight.","Rideshare drop off is right at departures."]]
+ ["✈️","Before you fly","Check in, ID, what to pack",["<b>Check in</b> on your airline's app 24 hours before the flight.","<b>Pack layers.</b> Days are high 60s, nights drop to the mid 40s, and Tuesday looks rainy.","<b>Shoes:</b> comfy walking shoes (10 miles on the Strip is normal) and something cute for nights.","<b>Download the rideRTC app</b> for bus passes, plus Uber or Lyft.","<b>Bring:</b> ID, one card plus a backup, a little cash for tips, a power bank, sunglasses, SPF and lip balm."]],
+ ["🛬","Landing at LAS","Bus or rideshare from the airport",["Most flights use <b>Terminal 1</b> (a few airlines use Terminal 3). Follow signs to Baggage Claim, then <b>Ground Transportation</b>.","<b>Easiest:</b> Rideshare signs lead to the pickup zone. Usually around $25 to $40. Match the plate and driver name before you get in.","<b>Cheapest:</b> public buses stop on <b>Level Zero</b> at Terminal 1. The <b>CX</b> heads to the center Strip and downtown. The <b>RED LINE</b> goes to the South Strip Transit Terminal, where you switch to the Deuce.","Buy a pass in the rideRTC app before boarding. The $8 24 hour pass covers transfers."]],
+ ["🏨","Where to stay","Best areas and cheap picks",["Prices are Booking.com totals for 4 nights, 1 adult, checked Nov 26. Resort fees are added on top.","Center Strip hotels cost $800 and up this week because of a big tech conference, so these areas are the smart move.","<b>Easier still:</b> check flight plus hotel bundles on Expedia or Priceline. They are often cheaper than booking separately.",hotelsHTML]],
+ ["🚌","Getting around","Bus routes made simple",["<b>Deuce:</b> the double decker bus that runs the whole Strip and up to Fremont Street, 24 hours a day. $4 a ride, $8 for 24 hours, $20 for 3 days.","<b>SDX:</b> a faster express version with fewer stops between the Strip and downtown. Same passes.","<b>Strip to Fremont Street:</b> take the Deuce or SDX north. About 20 to 30 minutes.","<b>Back to the airport:</b> rideshare is easiest with bags. The CX also runs to Terminal 1.","<b>Monorail:</b> east side only, SAHARA to MGM Grand. $5.50 online per ride. Not 24/7.","<b>Free trams:</b> Excalibur to Luxor to Mandalay Bay, and Park MGM to Aria to Bellagio.","<b>Short hops:</b> the Strip is bigger than it looks. Two hotels that seem next door can be a 20 minute walk."]],
+ ["🧖‍♀️","Spa day","Budget to splurge picks",["<b>Imperial Spa:</b> Korean style spa off the Strip. Jade, salt and clay saunas, hot baths, a women's side. Around $45 to $55 a day.","<b>Qua Baths & Spa at Caesars:</b> Roman baths and the Arctic Ice Room. Spa pass around $172, massage plus pass from about $230.","<b>ResortPass:</b> hotel spa day passes from about $40 to $80, bookable online.","<b>Tips:</b> book massages ahead, arrive early to use the facilities, drink water, and tip therapists about 20%."]],
+ ["💸","Save money","Deals locals use",["<b>Half price shows:</b> Tix4Vegas booths sell same day tickets, often 25 to 50% off. Go in the morning for the best picks.","<b>Free players card:</b> sign up at your hotel casino. It can unlock food and show discounts.","<b>Bundle:</b> flight plus hotel packages often beat separate bookings.","<b>Tours with hotel pickup</b> are cheaper than renting a car for one day trip.","<b>Free fun:</b> Bellagio fountains and Conservatory, Fremont Street light shows, the flamingo habitat, the Welcome sign and window shopping.","<b>Food:</b> food halls and taco spots beat buffets and fancy restaurants."]],
+ ["💵","Money & tipping","What to tip",["<b>Resort fees</b> are added per night at most hotels. Already in your budget.","<b>Tipping:</b> bartenders $1 to $2 a drink, housekeeping $3 to $5 a night, rideshare about 15 to 20%, restaurants 18 to 20%, tour guides 15%.","Set a daily gambling limit, carry only that in cash, and leave cards in the room safe."]],
+ ["🎟️","Shows & tickets","Buying safely",["Buy from the <b>official box office, Ticketmaster or Tix4Vegas booths</b>. Avoid strangers selling tickets on the street.","Arrive <b>30 minutes early</b>. Big venues have security lines.","A small bag is always safest for venue bag rules."]],
+ ["🏜️","Day trips","Grand Canyon and Hoover by tour",["<b>Grand Canyon bus tour:</b> around $75 to $135 with hotel pickup. Long day, so bring water, snacks and layers.","<b>Hoover Dam:</b> the Grand Canyon bus tour usually includes a photo stop. A half day tour with hotel pickup starts around $65 if you want more.","<b>Tip:</b> read the pickup spot in your confirmation. Many tours pick up at a set bus area, not the front door.","Tip your guide about 15% if you enjoyed it."]],
+ ["👗","What to wear","Day, night, desert",["<b>Daytime:</b> jeans or casual layers and a light jacket.","<b>Nights out:</b> clubs enforce dress codes, so dress up and skip athletic wear. Fold flats into your bag.","<b>Tour days:</b> sneakers, sunglasses, a hat and a warm layer for the early start."]],
+ ["🛡️","Solo & safe","Simple habits that make it easy",["Share your <b>live location</b> with a friend for the whole trip.","Keep your drink in your hand and watch it being made.","Do not say your room number out loud.","Stick to busy, lit areas at night. On Fremont Street, stay under the main canopy and take a rideshare back late.","Casino security staff are everywhere and happy to help. In an emergency, call 911."]],
+ ["🍽️","Eat cheap & well","Easy favorites",["<b>Tacos El Gordo:</b> cheap, famous, great late at night.","<b>Peppermill:</b> neon diner since 1972, big portions.","<b>Food halls:</b> the Venetian, Park MGM's Eataly and downtown's food halls are great for solo.","<b>Lotus of Siam:</b> legendary northern Thai if you want one special meal."]],
+ ["🏠","Heading home","Checkout and the airport",["Check out on your hotel app to skip the line. The bell desk can hold bags.","Your flight is at noon, so leave the hotel by about 9:30 AM and be at LAS by 10."]]
 ];
 let readMap=store.get("read",{}),openChap=null;
 function renderGuide(){
@@ -439,19 +461,32 @@ function renderGuide(){
 }
 
 const TOURS=[
- ["Sky","Grand Canyon Helicopter","Canyon floor landing and champagne, Hoover Dam from the air.","from ~$439","https://papillon.com",1],
- ["Desert","Grand Canyon Bus Day","Eagle Point, Guano Point and the glass Skywalk option.","~$150 to $300","https://www.google.com/search?q=Grand+Canyon+West+Rim+day+tour+from+Las+Vegas"],
- ["Sky","Night Strip Helicopter","A short flight over the lit up Strip. Unforgettable views.","varies","https://www.google.com/search?q=Las+Vegas+Strip+night+helicopter+flight"],
- ["Desert","Red Rock Canyon","Red cliffs, a 13 mile scenic loop and easy hikes.","~$20 per car","https://www.recreation.gov/timed-entry/10075177"],
- ["Desert","Hoover Dam","Walk the dam and the bridge 900 ft above the river.","$10 parking","https://www.usbr.gov/lc/hooverdam/"],
- ["Desert","Valley of Fire","Fire red rock waves, an hour northeast. Bring water.","park fee","https://parks.nv.gov/parks/valley-of-fire"],
+ ["Best value","Grand Canyon West Rim bus tour","Hotel pickup, Hoover Dam photo stop, Eagle Point and Guano Point.","~$75 to $135","https://www.travelocity.com/things-to-do/west-rim-bus-tour-with-guided-walking-tour-and-hoover-dam-photo-stop.a523459.activity-details",1],
+ ["Half day","Hoover Dam tour","Hotel pickup, walk the dam, Memorial Bridge lookout.","from ~$65","https://www.expedia.com/things-to-do/hoover-dam-express-tour.a307674.activity-details"],
+ ["Half day","Hoover Dam + Seven Magic Mountains","Small group, adds the colorful desert art and Boulder City.","~$68","https://www.google.com/search?q=Hoover+Dam+and+Seven+Magic+Mountains+small+group+tour"],
+ ["Half day","Red Rock Canyon small group","Hotel pickup, the 13 mile scenic loop and Calico Hills.","~$142 to $150","https://www.tripster.com/detail/red-rock-canyon-small-group-tour-las-vegas"],
+ ["Splurge","Grand Canyon helicopter","Canyon floor landing and champagne.","from ~$439","https://papillon.com"],
  ["Thrill","Fly LINQ Zipline","Seated zip 12 stories over the LINQ Promenade.","from ~$44","https://www.google.com/search?q=Fly+LINQ+zipline"],
- ["Thrill","Indoor Skydiving","Fly in a wind tunnel. No plane needed.","varies","https://www.google.com/search?q=Vegas+Indoor+Skydiving"],
- ["Night","Neon Museum","Glowing retired casino signs after dark.","varies","https://www.neonmuseum.org"],
- ["Indoor","Mob Museum","Vegas history with a speakeasy downstairs.","varies","https://themobmuseum.org"]
+ ["Indoor","Omega Mart at AREA15","Immersive art world by Meow Wolf.","~$46 to $59","https://area15.com"],
+ ["Night","Neon Museum","Glowing retired casino signs after dark.","varies","https://www.neonmuseum.org"]
 ];
-const WEEK=[["Fri & Sat","8:30 PM","Eagles at Sphere","Final 2026 run of their record residency.",""],["Fri & Sat","8:00 PM","LISA · VIVA LA LISA","First ever K pop Vegas residency at Caesars Palace. Resale only.",""],["Sat 28","1:00 PM","Golden Knights vs Canadiens","NHL matinee at T Mobile Arena.","teal"],["Sat 28","6:00 PM","UNLV vs Nevada","Fremont Cannon rivalry at Allegiant. From ~$45.","teal"],["Sat 28","10:30 PM","Sidepiece at LIV","Saturday headliner at Fontainebleau.",""],["Mon 30","7:00 PM","Wizard of Oz at Sphere","Daytime screenings Fri to Sun too. ~$114 to $145.",""]];
-const RES=[["Cirque","O","Bellagio's water show. The one to see.","from ~$116"],["Cirque","KÀ","MGM Grand. Martial arts on a spinning stage.","from ~$64"],["Cirque","Mystère","Treasure Island. The original, great value.","from ~$65"],["Cirque","Michael Jackson ONE","Mandalay Bay. Dance and acrobatics.","varies"],["Comedy","Absinthe","Caesars Palace. Cheeky, adults only.","varies"],["Magic","Shin Lim","Palazzo Theatre. Close up magic.","varies"]];
+const SPA=[
+ ["Budget","Imperial Spa","Korean style spa with jade, salt and clay saunas and hot baths. Women's side.","~$45 to $55","https://www.google.com/maps/search/Imperial+Spa+Las+Vegas"],
+ ["Easy middle","Hotel spa passes","ResortPass day passes at Strip and off Strip hotels.","~$40 to $80","https://www.resortpass.com/s/us/nv/las-vegas/spa"],
+ ["Splurge","Qua Baths & Spa","Caesars Palace. Roman baths and a snowy Arctic Ice Room.","pass ~$172","https://www.resortpass.com/experiences/spa-pass-3231295"]
+];
+const FREE=[
+ ["Bellagio fountains","Shows every 15 to 30 minutes from afternoon to midnight."],
+ ["Bellagio Conservatory","Postcards from Christmas holiday display, open 24/7."],
+ ["Fremont Street light shows","Under the canopy downtown, plus street performers."],
+ ["Flamingo wildlife habitat","Real flamingos and pelicans in a garden at the Flamingo."],
+ ["Welcome to Las Vegas sign","The classic photo at the south end of the Strip."],
+ ["Venetian canals","Painted skies and gondolas. Walking around is free."],
+ ["Ethel M Cactus Garden Lights","Over a million lights in Henderson."],
+ ["Sportsbook game watching","Big screens, free to sit and watch."]
+];
+const WEEK=[["Fri & Sat","8:30 PM","Eagles at Sphere","Final 2026 run of their record residency.",""],["Fri & Sat","8:00 PM","LISA · VIVA LA LISA","First ever K pop Vegas residency at Caesars Palace. Resale only.",""],["Sat 28","1:00 PM","Golden Knights vs Canadiens","NHL matinee at T Mobile Arena.","teal"],["Sat 28","6:00 PM","UNLV vs Nevada","Fremont Cannon rivalry at Allegiant. From ~$45.","teal"],["Mon 30","7:00 PM","Wizard of Oz at Sphere","Daytime screenings Fri to Sun too. ~$114 to $145.",""]];
+const RES=[["Cirque","Mystère","Treasure Island. The original, great value.","from ~$65"],["Cirque","KÀ","MGM Grand. Martial arts on a spinning stage.","from ~$64"],["Cirque","O","Bellagio's water show.","from ~$116"],["Comedy","Absinthe","Caesars Palace. Cheeky, adults only.","varies"],["Magic","Shin Lim","Palazzo Theatre. Close up magic.","varies"],["Tip","Tix4Vegas booths","Same day seats, often 25 to 50% off.","save"]];
 const HOL=[["24/7","FREE","Bellagio Conservatory","Postcards from Christmas: a holiday train and winter scenes under glass.","teal"],["Nightly","5 to 10 PM","Ethel M Cactus Garden","Over a million lights in Henderson.",""],["Nightly","to Jan 3","Glittering Lights","6 million lights on a 3 mile drive thru. Needs a car.",""],["Seasonal","Rooftop","Cosmopolitan Ice Rink","Real ice over the Strip. Usually opens around Thanksgiving; confirm first.","teal"]];
 let seg="tours";
 const tk=(w,i)=>`<div class="ticket ${w[4]}" style="--i:${i}"><div class="when"><b>${w[0]}</b><small>${w[1]}</small></div><div class="what"><h4>${w[2]}</h4><p>${w[3]}</p></div></div>`;
@@ -459,26 +494,28 @@ function renderExplore(){
   document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.s===seg));
   let h="";
   if(seg==="tours")h=`<div class="grid">${TOURS.map((t,i)=>`<div class="card" style="--i:${i}">${t[5]?'<div class="ribbon">TOP PICK</div>':""}<div class="cat">${t[0]}</div><h4>${t[1]}</h4><p>${t[2]}</p><div class="row"><span class="pr">${t[3]}</span><a href="${t[4]}" target="_blank" rel="noopener">Book ↗</a></div></div>`).join("")}</div>`;
-  if(seg==="shows")h=`<p class="lede">On this weekend only</p>${WEEK.map(tk).join("")}<h2 class="h2">Always <em>On</em></h2><div class="grid">${RES.map((r,i)=>`<div class="card" style="--i:${i}"><div class="cat">${r[0]}</div><h4>${r[1]}</h4><p>${r[2]}</p><div class="row"><span class="pr">${r[3]}</span><a href="https://www.google.com/search?q=${encodeURIComponent(r[1]+" Las Vegas tickets")}" target="_blank" rel="noopener">Tickets ↗</a></div></div>`).join("")}</div><div class="note">Mad Apple at New York New York closed in September 2026, so skip any old listings for it.</div>`;
+  if(seg==="shows")h=`<p class="lede">On this weekend only</p>${WEEK.map(tk).join("")}<h2 class="h2">Always <em>On</em></h2><div class="grid">${RES.map((r,i)=>`<div class="card" style="--i:${i}"><div class="cat">${r[0]}</div><h4>${r[1]}</h4><p>${r[2]}</p><div class="row"><span class="pr">${r[3]}</span><a href="https://www.google.com/search?q=${encodeURIComponent(r[1]+" Las Vegas tickets")}" target="_blank" rel="noopener">${r[0]==="Tip"?"Find ↗":"Tickets ↗"}</a></div></div>`).join("")}</div><div class="note">Mad Apple at New York New York closed in September 2026, so skip any old listings for it.</div>`;
+  if(seg==="spa")h=`<div class="grid">${SPA.map((t,i)=>`<div class="card" style="--i:${i}"><div class="cat">${t[0]}</div><h4>${t[1]}</h4><p>${t[2]}</p><div class="row"><span class="pr">${t[3]}</span><a href="${t[4]}" target="_blank" rel="noopener">See ↗</a></div></div>`).join("")}</div>`;
+  if(seg==="free")h=`<div class="grid">${FREE.map((f,i)=>`<div class="card" style="--i:${i}"><div class="cat">Free</div><h4>${f[0]}</h4><p>${f[1]}</p></div>`).join("")}</div>`;
   if(seg==="lights")h=HOL.map(tk).join("");
   $("exview").innerHTML=h;
 }
 document.querySelectorAll("#seg button").forEach(b=>b.onclick=()=>{seg=b.dataset.s;renderExplore()});
 
-const BOOK=[["Hotel for Nov 27 to Dec 1","See Guide › Where to stay"],["Grand Canyon flight for Sunday morning","Hotel pickup included"],["Friday show","Eagles, LISA or O"],["Red Rock timed entry, Mon 8:30 AM","recreation.gov"],["Wizard of Oz at Sphere, Mon 7 PM",""],["Optional: Golden Knights Sat, Absinthe Sun, rental car Mon",""]];
+const BOOK=[["Flight + hotel","Try a bundle first, then compare with booking separately"],["Grand Canyon bus tour, Sunday","Hotel pickup included"],["Spa day, Monday","Book a massage or spa pass ahead"],["Wizard of Oz at Sphere, Mon 7 PM","Optional splurge"],["Download rideRTC and Uber or Lyft","For buses and rides"],["Saturday's show","Buy same day at a Tix4Vegas booth"]];
 let checks=store.get("checks",{});
 function renderBook(){
   $("booklist").innerHTML=BOOK.map((c,i)=>`<label class="citem ${checks[i]?"on":""}"><input type="checkbox" class="check" data-k="${i}" ${checks[i]?"checked":""}><span>${c[0]}${c[1]?`<small>${c[1]}</small>`:""}</span></label>`).join("");
   document.querySelectorAll("#booklist .check").forEach(c=>c.onchange=()=>{checks[c.dataset.k]=c.checked;store.set("checks",checks);c.closest(".citem").classList.toggle("on",c.checked)});
 }
-const BDEF=[["Flights","Round trip nonstop",437,"#ff3d8b"],["Hotel","4 nights, SAHARA estimate",555,"#c2307a"],["Resort fees","Estimate",180,"#8f2a68"],["Grand Canyon helicopter","Sunday",499,"#2ef2d0"],["Friday show","Eagles, LISA or O",175,"#f6c453"],["Wizard of Oz at Sphere","Monday",135,"#e0a83a"],["Absinthe","Sunday",120,"#c78b26"],["Golden Knights","Saturday",110,"#a8711a"],["Rental car + gas","Monday",90,"#21b8a0"],["Park & dam fees","Red Rock, Hoover",50,"#178a78"],["Food & drinks","5 days",450,"#7d6bd6"],["Rideshares","Airport and nights",180,"#5d4fb0"],["Attractions","Zipline, AREA15, extras",140,"#43378a"],["Fun money","Shopping, games",250,"#ffffff"]];
+const BDEF=[["Flights","Change to what you paid",437,"#ff3d8b"],["Hotel","4 nights, Four Queens estimate",314,"#c2307a"],["Resort fees","Estimate",140,"#8f2a68"],["Grand Canyon bus tour","Sunday",110,"#2ef2d0"],["Spa day","Monday",120,"#21b8a0"],["Half price show","Saturday",70,"#f6c453"],["Wizard of Oz at Sphere","Monday, optional",130,"#e0a83a"],["Buses + rideshares","Airport and nights",90,"#5d4fb0"],["Food & drinks","5 days, cheap eats",300,"#7d6bd6"],["Attractions","Omega Mart, extras",70,"#43378a"],["Fun money","Shopping, games",150,"#ffffff"]];
 let bvals=store.get("budget",BDEF.map(b=>b[2]));if(bvals.length!==BDEF.length)bvals=BDEF.map(b=>b[2]);
 function renderBudget(){
   $("blines").innerHTML=BDEF.map((b,i)=>`<div class="bline"><span class="sw" style="background:${b[3]}"></span><label for="b${i}">${b[0]}<small>${b[1]}</small></label><input id="b${i}" type="number" inputmode="numeric" min="0" step="5" value="${bvals[i]}"></div>`).join("");
   document.querySelectorAll(".bline input").forEach((inp,i)=>inp.oninput=()=>{bvals[i]=Math.max(0,parseFloat(inp.value)||0);store.set("budget",bvals);sumBudget()});
   sumBudget();
 }
-function sumBudget(){const t=bvals.reduce((a,b)=>a+b,0);$("btotal").textContent="$"+Math.round(t).toLocaleString();$("bper").textContent="about $"+Math.round(t/5).toLocaleString()+" a day";$("bbar").innerHTML=BDEF.map((b,i)=>`<i style="width:${t?bvals[i]/t*100:0}%;background:${b[3]}"></i>`).join("")}
+function sumBudget(){const t=bvals.reduce((a,b)=>a+b,0);$("btotal").textContent="$"+Math.round(t).toLocaleString();$("bper").textContent="about $"+Math.round(t/5).toLocaleString()+" a day";$("allin").textContent="$"+(Math.round(t/50)*50).toLocaleString();$("bbar").innerHTML=BDEF.map((b,i)=>`<i style="width:${t?bvals[i]/t*100:0}%;background:${b[3]}"></i>`).join("")}
 $("breset").onclick=()=>{bvals=BDEF.map(b=>b[2]);store.set("budget",bvals);renderBudget()};
 
 function showTab(t){
@@ -487,7 +524,7 @@ function showTab(t){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>showTab(t.dataset.t));
-document.querySelectorAll(".qc").forEach(q=>q.onclick=()=>showTab(q.dataset.go));
+document.querySelectorAll(".qc").forEach(q=>q.onclick=()=>{if(q.dataset.chap){openChap=+q.dataset.chap;renderGuide()}showTab(q.dataset.go)});
 
 const OB=[["🌵","Welcome"+(who?", "+who:"")+"!","This is your whole Vegas trip in one place. No stress, no planning needed."],["✨","Home shows Now & Next","During the trip, the Home screen always tells you what is happening now and what is coming up."],["🧭","Tap anything for the how","Every stop in the Plan opens into simple steps, and the Guide answers everything else."]];
 let obi=0;
