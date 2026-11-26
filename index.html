@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0717">
+<title>Vegas · Nov 27 to Dec 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Limelight&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0717;--pink:#ff3d8b;--teal:#2ef2d0;--gold:#f6c453;--sand:#f5ead8;--muted:#a99fc0;--line:rgba(245,234,216,.12);--card:rgba(255,255,255,.045);--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Bricolage Grotesque",system-ui,sans-serif;color:var(--sand);min-height:100vh;padding-bottom:112px;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(120% 60% at 50% -10%,#3a1a5c 0%,transparent 60%),radial-gradient(90% 50% at 100% 30%,rgba(255,61,139,.14) 0%,transparent 60%),radial-gradient(80% 50% at 0% 70%,rgba(46,242,208,.08) 0%,transparent 60%),var(--ink)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.stars{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 20% 30%,#fff9,transparent),radial-gradient(1px 1px at 70% 10%,#fff7,transparent),radial-gradient(1.5px 1.5px at 85% 40%,#fff8,transparent),radial-gradient(1px 1px at 40% 15%,#fff6,transparent),radial-gradient(1px 1px at 10% 60%,#fff5,transparent),radial-gradient(1px 1px at 60% 55%,#fff4,transparent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px;position:relative;z-index:1}
+.panel{display:none;animation:rise .45s ease both}
+.panel.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.h2{font-family:"Limelight",serif;font-size:29px;margin:26px 0 6px;color:#fff}
+.h2 em{font-style:normal;color:var(--pink);text-shadow:0 0 14px rgba(255,61,139,.6)}
+.lede{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:16px}
+.mono{font-family:"DM Mono",monospace}
+
+.hero{position:relative;padding:40px 0 8px;text-align:center;overflow:hidden}
+.burst{position:absolute;left:50%;top:-60px;width:900px;height:900px;transform:translateX(-50%);z-index:-1;background:repeating-conic-gradient(from 0deg,rgba(246,196,83,.07) 0 4deg,transparent 4deg 12deg);-webkit-mask:radial-gradient(circle,#000 0%,transparent 55%);mask:radial-gradient(circle,#000 0%,transparent 55%);animation:spin 120s linear infinite}
+@keyframes spin{to{transform:translateX(-50%) rotate(360deg)}}
+.eyebrow{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--teal);text-transform:uppercase}
+.sign{font-family:"Monoton",cursive;font-size:clamp(62px,18vw,124px);line-height:1;margin:12px 0 2px;color:#fff;text-shadow:0 0 6px #fff,0 0 14px var(--pink),0 0 32px var(--pink),0 0 70px var(--pink);animation:flicker 4s 1 both}
+.sign span{display:inline-block}.sign .b{animation:buzz 7s infinite 3s}
+@keyframes flicker{0%{opacity:0}8%{opacity:1}10%{opacity:.2}14%{opacity:1}22%{opacity:.4}26%,100%{opacity:1}}
+@keyframes buzz{0%,92%,100%{opacity:1}93%{opacity:.35}95%{opacity:1}96%{opacity:.5}}
+.script{font-family:"Limelight",serif;font-size:clamp(21px,5vw,28px);color:var(--gold);text-shadow:0 0 18px rgba(246,196,83,.45)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:400px;margin:18px auto 6px}
+.count div{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:14px;padding:10px 4px}
+.count strong{display:block;font-family:"DM Mono",monospace;font-size:26px;color:#fff;text-shadow:0 0 12px rgba(46,242,208,.5)}
+.count small{font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.count-label{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);margin-top:18px;letter-spacing:.16em}
+
+.now{margin:22px 0 4px;border-radius:24px;padding:18px;position:relative;overflow:hidden;background:linear-gradient(150deg,rgba(255,61,139,.22),rgba(46,242,208,.08) 70%),rgba(255,255,255,.03);border:1px solid rgba(255,61,139,.35);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.now .lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--teal);display:flex;align-items:center;gap:8px}
+.now .lbl i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.now h3{font-family:"Limelight",serif;font-size:26px;line-height:1.15;margin:8px 0 4px;color:#fff}
+.now p{color:#d9cfe6;font-size:14.5px;line-height:1.5}
+.now .next{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(245,234,216,.2);font-size:14px;color:var(--muted)}
+.now .next b{color:var(--sand)}
+.go{margin-top:14px;display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;background:#fff;color:var(--ink);font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.08em;padding:10px 16px;border-radius:99px;font-weight:500}
+
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 10px;text-align:center;cursor:pointer;color:var(--sand);font-family:inherit;transition:.2s}
+.qc:hover{border-color:var(--gold)}
+.qc .e{font-size:24px}
+.qc b{display:block;font-size:14px;margin-top:6px}
+.qc small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+
+.pass{display:grid;grid-template-columns:1fr auto;text-align:left;border-radius:var(--r);overflow:hidden;position:relative;margin-top:8px;background:linear-gradient(135deg,#f8efdf,#efdcbc);color:#24123d;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.pass .main{padding:16px 16px 14px}
+.pass .stub{width:92px;border-left:2px dashed rgba(36,18,61,.35);padding:16px 8px 52px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;background:repeating-linear-gradient(90deg,#24123d 0 2px,transparent 2px 5px) center bottom 12px/70% 28px no-repeat}
+.pass::before,.pass::after{content:"";position:absolute;right:84px;width:18px;height:18px;border-radius:50%;background:var(--ink)}
+.pass::before{top:-9px}.pass::after{bottom:-9px}
+.leg{display:flex;align-items:center;gap:10px;margin:5px 0}
+.code{font-family:"Limelight",serif;font-size:30px}
+.plane{flex:1;height:1px;background:repeating-linear-gradient(90deg,#24123d 0 6px,transparent 6px 10px);position:relative}
+.plane::after{content:"✈";position:absolute;left:50%;top:-11px;transform:translateX(-50%);font-size:16px;background:#f3e4c8;padding:0 4px}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;font-family:"DM Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.8}
+.meta span{white-space:nowrap}
+.pass h4{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;opacity:.6;text-transform:uppercase}
+.pass .sep{height:1px;background:rgba(36,18,61,.15);margin:10px 0}
+.stub .price{font-family:"Limelight",serif;font-size:24px;line-height:1}
+.stub small{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.12em;opacity:.7;text-align:center}
+.wx{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 0}
+.wx>div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 4px;text-align:center}
+.wx .d{font-family:"DM Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.14em}
+.wx .i{font-size:19px;margin:3px 0}
+.wx .t{font-weight:800;font-size:15px}
+.wx .l{font-size:11px;color:var(--muted)}
+.wx>.rain{border-color:rgba(46,242,208,.45)}
+
+.days{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 12px;scrollbar-width:none;position:sticky;top:0;z-index:5;background:linear-gradient(var(--ink) 75%,transparent)}
+.days::-webkit-scrollbar{display:none}
+.daybtn{flex:1 0 auto;min-width:62px;border:1px solid var(--line);background:var(--card);color:var(--sand);border-radius:16px;padding:9px 10px;cursor:pointer;font-family:inherit;transition:.25s}
+.daybtn .dw{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.daybtn .dn{font-family:"Limelight",serif;font-size:24px;line-height:1.1}
+.daybtn.on{background:linear-gradient(160deg,var(--pink),#b5206a);border-color:transparent;box-shadow:0 8px 30px rgba(255,61,139,.35)}
+.daybtn.on .dw{color:#ffe0ee}
+.dayhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:8px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.dayhead h3{font-family:"Limelight",serif;font-size:27px;line-height:1.1}
+.dayhead p{color:var(--teal);font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.06em;margin-top:6px}
+.prog{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}
+.prog b{display:block;font-size:22px;color:var(--gold)}
+.tl{position:relative;padding-left:20px}
+.tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--pink),var(--teal),var(--gold));opacity:.55}
+.item{position:relative;margin-bottom:10px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);animation:rise .45s ease both;animation-delay:calc(var(--i)*50ms);transition:border-color .2s}
+.item::before{content:"";position:absolute;left:-20px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--ink);border:2px solid var(--pink);box-shadow:0 0 10px var(--pink)}
+.item.open{border-color:rgba(255,61,139,.45)}
+.item.done{opacity:.5}.item.done .ih{text-decoration:line-through;text-decoration-color:var(--pink)}
+.ihead{display:flex;gap:12px;align-items:center;padding:13px 14px;cursor:pointer}
+.itime{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--teal);min-width:62px}
+.ibody{flex:1;min-width:0}
+.ih{font-weight:800;font-size:16.5px;line-height:1.25}
+.id{color:var(--muted);font-size:13.5px;line-height:1.4;margin-top:3px}
+.chev{color:var(--muted);transition:transform .25s;font-size:14px}
+.item.open .chev{transform:rotate(90deg);color:var(--pink)}
+.idet{display:none;padding:0 14px 14px 88px}
+.item.open .idet{display:block;animation:rise .3s ease both}
+.idet ol{list-style:none;counter-reset:s}
+.idet li{counter-increment:s;position:relative;padding-left:28px;margin:8px 0;font-size:14px;line-height:1.5;color:#e4dbef}
+.idet li::before{content:counter(s);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:rgba(46,242,208,.15);color:var(--teal);font-family:"DM Mono",monospace;font-size:11px;display:grid;place-items:center}
+.irow2{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.tag{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:99px;border:1px solid}
+.t-book{color:var(--gold);border-color:rgba(246,196,83,.45)}.t-free{color:var(--teal);border-color:rgba(46,242,208,.45)}.t-splurge{color:var(--pink);border-color:rgba(255,61,139,.5)}
+.btnl{font-size:13px;color:var(--ink);background:var(--gold);text-decoration:none;padding:7px 12px;border-radius:99px;font-weight:600}
+.donebtn{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;border:1px solid var(--line);background:transparent;color:var(--sand);padding:7px 12px;border-radius:99px;cursor:pointer}
+.item.done .donebtn{background:var(--teal);color:var(--ink);border-color:var(--teal)}
+.swaps{margin-top:6px;border:1px dashed var(--line);border-radius:var(--r);overflow:hidden}
+.swaps summary{list-style:none;cursor:pointer;padding:13px 14px;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.swaps summary::-webkit-details-marker{display:none}
+.swaps[open] summary{color:var(--gold)}
+.swap{padding:12px 14px;border-top:1px solid var(--line)}
+.swap b{font-size:15px}
+.swap p{color:var(--muted);font-size:13.5px;line-height:1.45;margin-top:3px}
+.swap a{color:var(--gold);font-size:13px}
+
+.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px;margin:6px 0 16px}
+.seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:9px 6px;border-radius:99px;cursor:pointer;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.06em;transition:.2s}
+.seg button.on{background:var(--teal);color:var(--ink);box-shadow:0 0 18px rgba(46,242,208,.35)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;position:relative;overflow:hidden;animation:rise .45s ease both;animation-delay:calc(var(--i)*35ms)}
+.card .cat{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase}
+.card h4{font-size:17.5px;font-weight:800;margin:6px 0;line-height:1.2}
+.card p{color:var(--muted);font-size:14px;line-height:1.45}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-family:"DM Mono",monospace;font-size:12px}
+.card .pr{color:var(--gold)}
+.card a{color:var(--sand);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:99px;font-size:12px}
+.ribbon{position:absolute;top:12px;right:-30px;transform:rotate(35deg);background:var(--pink);color:#fff;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.16em;padding:4px 34px}
+.ticket{display:flex;margin-bottom:10px;border-radius:var(--r);overflow:hidden;background:linear-gradient(110deg,rgba(255,61,139,.16),rgba(255,255,255,.03));border:1px solid rgba(255,61,139,.3);animation:rise .45s ease both;animation-delay:calc(var(--i)*45ms)}
+.ticket .when{width:88px;flex:0 0 auto;padding:14px 8px;text-align:center;border-right:2px dashed rgba(245,234,216,.2);display:flex;flex-direction:column;justify-content:center}
+.ticket .when b{font-family:"Limelight",serif;font-size:20px;line-height:1.1;color:#fff}
+.ticket .when small{font-family:"DM Mono",monospace;font-size:10px;color:var(--teal);margin-top:4px}
+.ticket .what{padding:13px 15px;flex:1}
+.ticket h4{font-size:16.5px;font-weight:800}
+.ticket p{color:var(--muted);font-size:13.5px;line-height:1.45;margin-top:3px}
+.ticket.teal{background:linear-gradient(110deg,rgba(46,242,208,.12),rgba(255,255,255,.03));border-color:rgba(46,242,208,.3)}
+.note{border:1px solid rgba(246,196,83,.35);background:rgba(246,196,83,.07);border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.5;color:#f8e3b0;margin:14px 0}
+
+.ghead{display:flex;align-items:center;gap:16px;margin:8px 0 16px}
+.ring{width:74px;height:74px;flex:0 0 auto;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:7}
+.ring .bg{stroke:rgba(255,255,255,.08)}
+.ring .fg{stroke:var(--teal);stroke-linecap:round;transition:stroke-dashoffset .5s;filter:drop-shadow(0 0 6px rgba(46,242,208,.6))}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:"DM Mono",monospace;font-size:15px}
+.chap{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden;animation:rise .45s ease both;animation-delay:calc(var(--i)*40ms)}
+.chap.open{border-color:rgba(46,242,208,.4)}
+.chead{display:flex;align-items:center;gap:12px;padding:14px;cursor:pointer}
+.cnum{width:34px;height:34px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;font-size:18px;background:rgba(255,255,255,.06)}
+.chap.read .cnum{background:var(--teal)}
+.ctitle{flex:1}
+.ctitle b{display:block;font-size:16px}
+.ctitle small{color:var(--muted);font-size:12.5px}
+.cbody{display:none;padding:0 16px 16px 16px}
+.chap.open .cbody{display:block;animation:rise .3s ease both}
+.cbody ul{list-style:none}
+.cbody li{position:relative;padding-left:20px;margin:9px 0;font-size:14.5px;line-height:1.55;color:#e4dbef}
+.cbody li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--pink);transform:rotate(45deg)}
+.cbody li b{color:#fff}
+.readbtn{margin-top:12px;font-family:"DM Mono",monospace;font-size:12px;border:1px solid var(--teal);color:var(--teal);background:transparent;padding:9px 14px;border-radius:99px;cursor:pointer}
+.chap.read .readbtn{background:var(--teal);color:var(--ink)}
+.hotels{display:grid;gap:8px;margin-top:6px}
+.hotel{display:flex;justify-content:space-between;align-items:center;gap:10px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:14px;padding:11px 12px;text-decoration:none;color:var(--sand)}
+.hotel h5{font-size:15px;font-weight:800}
+.hotel p{font-size:12px;color:var(--muted);margin-top:2px}
+.hotel .hp{text-align:right;font-family:"DM Mono",monospace}
+.hotel .hp b{display:block;color:var(--gold);font-size:16px}
+.hotel .hp small{font-size:10px;color:var(--muted)}
+.score{display:inline-block;background:var(--teal);color:var(--ink);font-weight:800;font-size:11px;border-radius:6px;padding:1px 6px;margin-right:6px}
+.sos{display:flex;gap:12px;align-items:center;border-radius:var(--r);padding:14px;margin:16px 0;background:rgba(255,61,139,.1);border:1px solid rgba(255,61,139,.4)}
+.sos .e{font-size:26px}
+.sos b{display:block}
+.sos p{color:var(--muted);font-size:13px;line-height:1.45}
+
+.btotal{text-align:center;padding:20px;border-radius:24px;background:radial-gradient(circle at 50% 0%,rgba(255,61,139,.3),transparent 70%),var(--card);border:1px solid var(--line);margin-bottom:14px}
+.btotal small{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.btotal b{display:block;font-family:"Limelight",serif;font-size:52px;color:#fff;text-shadow:0 0 24px rgba(255,61,139,.6);line-height:1.1;margin:6px 0}
+.btotal span{font-family:"DM Mono",monospace;font-size:12px;color:var(--teal)}
+.bar{display:flex;height:10px;border-radius:99px;overflow:hidden;margin:14px 0 4px;background:rgba(255,255,255,.06)}
+.bar i{display:block;height:100%;transition:width .4s}
+.bline{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bline .sw{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.bline label{flex:1;font-size:15px}
+.bline label small{display:block;color:var(--muted);font-size:12px}
+.bline input{width:92px;background:rgba(0,0,0,.3);border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 10px;font-family:"DM Mono",monospace;font-size:14px;text-align:right}
+.bline input:focus{outline:none;border-color:var(--teal)}
+.btn{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px;border-radius:99px;font-family:"DM Mono",monospace;font-size:12px;cursor:pointer;margin-top:14px}
+.clist{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:4px 14px;margin-bottom:14px}
+.citem{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.citem:last-child{border-bottom:0}
+.citem span{font-size:15px;line-height:1.35}
+.citem small{display:block;color:var(--muted);font-size:12.5px}
+.citem.on span{opacity:.5;text-decoration:line-through}
+.check{appearance:none;width:24px;height:24px;border-radius:8px;border:1.5px solid var(--line);background:rgba(0,0,0,.25);cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
+.check:checked{background:var(--teal);border-color:var(--teal);box-shadow:0 0 14px rgba(46,242,208,.6)}
+.check:checked::after{content:"✓";color:var(--ink);font-weight:800;font-size:14px}
+
+.tabs{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;display:flex;gap:4px;padding:6px;border-radius:24px;width:min(500px,calc(100% - 24px));background:rgba(20,12,38,.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.tab{flex:1;border:0;background:transparent;color:var(--muted);padding:8px 2px;border-radius:18px;cursor:pointer;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;display:flex;flex-direction:column;align-items:center;gap:3px;transition:.25s}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+.tab.on{color:#fff;background:linear-gradient(160deg,rgba(255,61,139,.9),rgba(181,32,106,.9));box-shadow:0 0 20px rgba(255,61,139,.45)}
+
+.ob{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center;background:rgba(6,3,14,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ob.show{display:flex}
+.obc{width:min(520px,100%);margin:14px;border-radius:28px;padding:26px 22px 20px;background:linear-gradient(170deg,#24123f,#120a22);border:1px solid rgba(255,61,139,.35);box-shadow:0 30px 80px rgba(0,0,0,.6);animation:rise .4s ease both;text-align:center}
+.obc .e{font-size:42px}
+.obc h3{font-family:"Limelight",serif;font-size:27px;color:#fff;margin:10px 0 8px}
+.obc p{color:#d6cce4;font-size:15px;line-height:1.55}
+.dots{display:flex;gap:6px;justify-content:center;margin:18px 0}
+.dots i{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.2);transition:.3s}
+.dots i.on{width:22px;background:var(--pink)}
+.obb{display:flex;gap:10px}
+.obb button{flex:1;padding:13px;border-radius:99px;font-family:"DM Mono",monospace;font-size:13px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--muted)}
+.obb .pri{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 22px rgba(255,61,139,.45)}
+footer{color:var(--muted);font-size:12px;line-height:1.6;text-align:center;padding:32px 0 8px}
+@media (max-width:420px){.idet{padding-left:14px}.itime{min-width:54px;font-size:11px}.code{font-size:26px}.pass .stub{width:80px}.pass::before,.pass::after{right:72px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="stars"></div><div class="grain"></div>
+
+<main class="wrap">
+  <section id="home" class="panel active">
+    <header class="hero">
+      <div class="burst"></div>
+      <div class="eyebrow" id="hello">Your solo escape</div>
+      <h1 class="sign"><span>V</span><span class="b">E</span><span>G</span><span>A</span><span class="b">S</span></h1>
+      <div class="script">Fri Nov 27 to Tue Dec 1</div>
+      <div class="count-label" id="cdLabel">WHEELS UP IN</div>
+      <div class="count" id="cd">
+        <div><strong id="cdD">0</strong><small>Days</small></div>
+        <div><strong id="cdH">0</strong><small>Hrs</small></div>
+        <div><strong id="cdM">0</strong><small>Min</small></div>
+        <div><strong id="cdS">0</strong><small>Sec</small></div>
+      </div>
+    </header>
+    <div class="now" id="now"></div>
+    <div class="quick">
+      <button class="qc" data-go="guide"><div class="e">🧭</div><b>Guide</b><small>Everything, step by step</small></button>
+      <button class="qc" data-go="wallet"><div class="e">🎟️</div><b>Book</b><small>5 things to lock in</small></button>
+      <button class="qc" data-go="plan"><div class="e">🗓️</div><b>Plan</b><small>Day by day</small></button>
+    </div>
+    <div class="pass">
+      <div class="main">
+        <h4>Suggested out · Fri Nov 27 · American</h4>
+        <div class="leg"><span class="code">JFK</span><span class="plane"></span><span class="code">LAS</span></div>
+        <div class="meta"><span>7:59 AM ET</span><span>Nonstop</span><span>11:00 AM PT</span></div>
+        <div class="sep"></div>
+        <h4>Suggested back · Tue Dec 1 · American</h4>
+        <div class="leg"><span class="code">LAS</span><span class="plane"></span><span class="code">JFK</span></div>
+        <div class="meta"><span>12:56 PM PT</span><span>Nonstop</span><span>9:00 PM ET</span></div>
+      </div>
+      <div class="stub"><small>ROUND TRIP</small><div class="price">$437</div><small>Google Flights<br>Nov 26</small></div>
+    </div>
+    <div class="wx" id="wx"></div>
+  </section>
+
+  <section id="plan" class="panel">
+    <h2 class="h2">The <em>Plan</em></h2>
+    <p class="lede">One calm day at a time. Tap any stop to see exactly how to do it.</p>
+    <div class="days" id="days"></div>
+    <div id="dayview"></div>
+  </section>
+
+  <section id="guide" class="panel">
+    <h2 class="h2">Your <em>Guide</em></h2>
+    <div class="ghead">
+      <div class="ring"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="33"/><circle class="fg" id="ringfg" cx="40" cy="40" r="33" stroke-dasharray="207.3" stroke-dashoffset="207.3"/></svg><b id="ringtxt">0/0</b></div>
+      <p class="lede" style="margin:0">Short chapters, read in any order. Each one takes about a minute. Tick it off when you are done.</p>
+    </div>
+    <div id="chapters"></div>
+    <div class="sos"><div class="e">🆘</div><div><b>Emergency: call 911</b><p>Casino security staff are on every floor and can help with anything. Save your hotel's front desk number in your phone on day one.</p></div></div>
+  </section>
+
+  <section id="explore" class="panel">
+    <h2 class="h2">Explore <em>More</em></h2>
+    <p class="lede">Extras if you have energy left. Nothing here is required.</p>
+    <div class="seg" id="seg"><button class="on" data-s="tours">Tours</button><button data-s="shows">Shows</button><button data-s="lights">Lights</button></div>
+    <div id="exview"></div>
+  </section>
+
+  <section id="wallet" class="panel">
+    <h2 class="h2">Book <em>These</em></h2>
+    <p class="lede">The only things that need booking ahead. Tick them as you go.</p>
+    <div class="clist" id="booklist"></div>
+    <h2 class="h2">The <em>Budget</em></h2>
+    <p class="lede">Starting estimates for this plan. Change any number; it saves on this phone.</p>
+    <div class="btotal"><small>TRIP TOTAL</small><b id="btotal">$0</b><span id="bper"></span><div class="bar" id="bbar"></div></div>
+    <div id="blines"></div>
+    <button class="btn" id="breset">Reset to estimates</button>
+  </section>
+
+  <footer>Researched Nov 26, 2026. Prices and times change, so confirm before paying.<br>Made with love for a solo trip. Have the best time.</footer>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button class="tab on" data-t="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg>HOME</button>
+  <button class="tab" data-t="plan"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>PLAN</button>
+  <button class="tab" data-t="guide"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>GUIDE</button>
+  <button class="tab" data-t="explore"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/><circle cx="17" cy="5" r="2"/></svg>EXPLORE</button>
+  <button class="tab" data-t="wallet"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg>BOOK</button>
+</nav>
+
+<div class="ob" id="ob"><div class="obc"><div class="e" id="obe"></div><h3 id="obt"></h3><p id="obp"></p><div class="dots" id="obd"></div><div class="obb"><button id="obs">Skip</button><button class="pri" id="obn">Next</button></div></div></div>
+
+<script>
+const store={get(k,d){try{const v=localStorage.getItem("tvg_"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("tvg_"+k,JSON.stringify(v))}catch(e){}}};
+const $=id=>document.getElementById(id);
+
+let who=store.get("who","");
+try{const q=new URLSearchParams(location.search).get("for");if(q){who=q.replace(/[^A-Za-z ]/g,"").slice(0,20).trim();store.set("who",who)}}catch(e){}
+if(who){$("hello").textContent=who+"'s solo escape";document.title=who+"'s Vegas · Nov 27 to Dec 1"}
+
+const WX=[["FRI","☁️",69,45,""],["SAT","⛅",68,49,""],["SUN","☀️",68,50,""],["MON","☁️",67,53,""],["TUE","🌧️",60,52,"rain"]];
+$("wx").innerHTML=WX.map(w=>`<div class="${w[4]}"><div class="d">${w[0]}</div><div class="i">${w[1]}</div><div class="t">${w[2]}°</div><div class="l">${w[3]}°${w[4]?" · 75%":""}</div></div>`).join("");
+
+const DEP=new Date("2026-11-27T07:59:00-05:00"),RET=new Date("2026-12-01T21:00:00-05:00");
+function tick(){
+  const now=new Date();let target=DEP,label="WHEELS UP IN";
+  if(now>=DEP&&now<RET){target=RET;label="VEGAS TIME LEFT"}
+  if(now>=RET){$("cdLabel").textContent="WELCOME HOME";$("cd").style.display="none";return}
+  $("cdLabel").textContent=label;
+  let s=Math.max(0,Math.floor((target-now)/1000));
+  const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;
+  $("cdD").textContent=d;$("cdH").textContent=String(h).padStart(2,"0");$("cdM").textContent=String(m).padStart(2,"0");$("cdS").textContent=String(s).padStart(2,"0");
+}
+
+const DATES={fri:"2026-11-27",sat:"2026-11-28",sun:"2026-11-29",mon:"2026-11-30",tue:"2026-12-01"};
+const DAYS=[
+{id:"fri",dw:"FRI",dn:"27",title:"Arrive & Glow",sub:"69° · cloudy · sunset 4:30",items:[
+ {t:"5:30 AM",z:"E",h:"Head to JFK",d:"American flies from Terminal 8.",how:["Rideshare, or the AirTrain from Jamaica station.","Keep your ID handy and aim to be through security by 6:45.","Grab breakfast after security. It is a 6 hour flight."]},
+ {t:"7:59 AM",z:"E",h:"Fly to Las Vegas",d:"Nonstop. Lands 11:00 AM Vegas time.",how:["Check in on the American app 24 hours before.","Vegas is 3 hours behind New York. Change your watch when you land."],tags:["book"]},
+ {t:"11:15 AM",h:"Land and ride to the hotel",d:"Terminal 1, about 20 minutes to the Strip.",how:["Follow signs for Ground Transportation, then Rideshare.","Match the license plate in the app before you get in.","If the room is not ready, the bell desk will hold your bags for free."]},
+ {t:"12:30 PM",h:"Tacos El Gordo",d:"Cheap, famous, perfect first bite.",how:["Order the adobada tacos (spit roasted pork) or carne asada.","It is on the Strip across from Encore. The line moves fast."],tags:["free"]},
+ {t:"2:00 PM",h:"Check in and nap",d:"You have been up since 4:30 AM New York time.",how:["Politely ask for a high floor with a Strip view. It never hurts.","Set an alarm for 3:15 and rest."]},
+ {t:"3:45 PM",h:"Bellagio Conservatory",d:"Free holiday display, then the fountains.",how:["Walk in through the Bellagio lobby with the glass flower ceiling. The Conservatory is right behind it.","This year's display is called Postcards from Christmas.","Step outside to the lake railing. Fountain shows run every 15 to 30 minutes."],tags:["free"]},
+ {t:"4:30 PM",h:"Sunset at the Eiffel Tower",d:"Paris Las Vegas, across the street.",how:["Buy tickets at the base inside Paris Las Vegas.","Go up 15 minutes before sunset and watch the Strip switch on."]},
+ {t:"6:15 PM",h:"Easy dinner",d:"Eataly at Park MGM or Wicked Spoon at the Cosmopolitan.",how:["Both are relaxed for solo dining. Counter seats are the best seats.","The Cosmopolitan's Chandelier Bar is worth a look on the way."]},
+ {t:"8:00 PM",h:"Big night: pick one show",d:"Eagles at Sphere, LISA, or O by Cirque.",how:["Eagles at Sphere start 8:30 PM.","LISA's VIVA LA LISA is 8:00 PM at Caesars Palace. Resale only now.","O at Bellagio is the classic Cirque water show. Check showtimes.","Buy from the official box office or Ticketmaster, not random resellers."],tags:["book","splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]}
+],swaps:[["Black Friday clubbing","Marquee, OMNIA and Zouk all have holiday headliners. Get on a free guest list during the day.",""]]},
+{id:"sat",dw:"SAT",dn:"28",title:"Fun Day",sub:"68° · partly cloudy",items:[
+ {t:"9:30 AM",h:"Brunch at the Peppermill",d:"Neon diner classic since 1972.",how:["Huge portions. One plate is plenty.","Peek into the fireside lounge on the way out."]},
+ {t:"11:00 AM",h:"Zipline + High Roller",d:"Fly LINQ zipline, then the giant wheel.",how:["Fly LINQ is a seated zipline 12 stories up, from about $44.","Then ride the High Roller, the 550 ft observation wheel next door.","Daytime is quieter and the views reach the mountains."],link:["https://www.google.com/search?q=Fly+LINQ+zipline+tickets","Find tickets"]},
+ {t:"1:00 PM",h:"Golden Knights hockey",d:"Vs Montreal Canadiens at T Mobile Arena.",how:["The pregame show is full Vegas theater, even if you do not follow hockey.","Single seats are easy to find and often cheaper.","Arrive 30 minutes early for the opening show."],tags:["book"],link:["https://www.nhl.com/goldenknights/tickets/single-game","Tickets"]},
+ {t:"4:30 PM",h:"AREA15 & Omega Mart",d:"Trippy art world, 10 minutes off the Strip.",how:["Omega Mart by Meow Wolf looks like a supermarket and turns into another universe. About $46 to $59.","Give yourself 2 hours. Open every door."],tags:["book"],link:["https://area15.com","AREA15"]},
+ {t:"7:00 PM",h:"Fremont Street",d:"Old Vegas under the light canopy.",how:["Rideshare to the Fremont Street Experience downtown.","Light shows play on the giant canopy screen through the evening.","Brave? Ride SlotZilla, the zipline right under the screen."],tags:["free"],link:["https://vegasexperience.com","Fremont Street"]},
+ {t:"8:30 PM",h:"Dinner downtown",d:"Circa, Golden Nugget or the Arts District.",how:["The Arts District is a short ride and full of local spots.","Head back to the Strip whenever you are ready."]}
+],swaps:[["UNLV vs Nevada football","6:00 PM at Allegiant Stadium. Battle for the Fremont Cannon. From about $45.","https://www.allegiantstadium.com"],["LIV at Fontainebleau","Sidepiece headlines at 10:30 PM. Dress up; no athletic wear.",""],["Neon Museum at night","Retired casino signs glowing in the dark. Great photos.","https://www.neonmuseum.org"]]},
+{id:"sun",dw:"SUN",dn:"29",title:"Grand Canyon",sub:"68° · clear · best flying weather",items:[
+ {t:"7:30 AM",h:"Helicopter to the Grand Canyon",d:"The once in a lifetime morning.",how:["Book a morning West Rim flight with hotel pickup. Papillon and Maverick are the big names. From about $439.","You fly over Hoover Dam and Lake Mead, land on the canyon floor, and toast with champagne.","Wear layers and closed shoes. Bring your ID; they weigh passengers for balance.","Back by early afternoon."],tags:["book","splurge"],link:["https://papillon.com","See tours"]},
+ {t:"1:00 PM",h:"Late lunch: Bacchanal Buffet",d:"Caesars Palace. Go hungry.",how:["Weekend lines peak at brunch, so late lunch is the sweet spot."]},
+ {t:"2:30 PM",h:"Spa reset",d:"Rest after an early start.",how:["Outdoor pools are mostly seasonal now. A spa day pass or your hotel hot tub is the move."]},
+ {t:"5:00 PM",h:"Cactus Garden Lights",d:"Over a million lights in Henderson.",how:["Ethel M Chocolates' Holiday Cactus Garden, 20 minutes by rideshare.","Grab hot chocolate and walk the garden.","Pick up chocolates as gifts while you are there."],tags:["free"],link:["https://www.ethelm.com","Ethel M"]},
+ {t:"8:30 PM",h:"Absinthe at Caesars Palace",d:"Hilarious, cheeky circus up close.",how:["Adults only and very funny. Acrobats perform inches from your seat.","Check the late showtimes and book a seat in the first few rows if you can."],tags:["book"]}
+],swaps:[["Budget Grand Canyon: West Rim bus tour","Full day, about 11 hours, with a Hoover Dam photo stop and Skywalk option. Roughly $150 to $300.","https://www.google.com/search?q=Grand+Canyon+West+Rim+bus+tour+from+Las+Vegas"],["Raiders on Sunday Night Football","5:20 PM. They play away, so big sportsbooks like Circa throw the party.",""]]},
+{id:"mon",dw:"MON",dn:"30",title:"Desert & Sphere",sub:"67° · cloudy",items:[
+ {t:"8:00 AM",h:"Pick up a one day rental car",d:"Unlocks the desert on your own time.",how:["Book online for pickup at the airport or a Strip hotel desk.","Not driving? Swap in a small group Red Rock tour instead."],tags:["book"]},
+ {t:"8:30 AM",h:"Red Rock Canyon",d:"Red cliffs, 20 minutes from the Strip.",how:["A timed entry reservation is required from 8 AM to 5 PM. Book on recreation.gov.","Drive the 13 mile scenic loop. Stop at Calico Hills for the red rocks.","Easy hike: Calico Tanks, a short scramble to a hidden pool with a Strip view."],tags:["book"],link:["https://www.recreation.gov/timed-entry/10075177","Reserve entry"]},
+ {t:"12:30 PM",h:"Lunch in Summerlin",d:"Red Rock Casino or Downtown Summerlin.",how:["Both are right on the drive back."]},
+ {t:"1:45 PM",h:"Hoover Dam",d:"Walk the dam and the bridge above it.",how:["Park in the Nevada side garage ($10).","Walk across the top of the dam, then the Memorial Bridge 900 ft above the river.","Optional Power Plant tour is $15. The visitor center is open 9 to 5."],link:["https://www.usbr.gov/lc/hooverdam/","Hoover Dam info"]},
+ {t:"5:00 PM",h:"Return the car, freshen up",d:"A big tech conference starts today.",how:["AWS re:Invent brings about 60,000 people. Leave extra time around the Venetian."]},
+ {t:"7:00 PM",h:"The Wizard of Oz at Sphere",d:"The classic on a 16K wraparound screen.",how:["4D effects, huge sound. Seats from about $114 to $145.","Arrive 30 minutes early to see the Sphere lobby."],tags:["book","splurge"],link:["https://www.thespherevegas.com","Sphere tickets"]},
+ {t:"9:30 PM",h:"Last night toast",d:"A rooftop, a speakeasy or the Chandelier Bar.",how:["Last night in Vegas. Pack before you go out."]}
+],swaps:[["Glittering Lights drive thru","6 million lights on a 3 mile route at the Speedway, if you keep the car tonight.","https://www.lvms.com"]]},
+{id:"tue",dw:"TUE",dn:"1",title:"Slow Morning, Home",sub:"60° · rain likely",items:[
+ {t:"8:30 AM",h:"Slow breakfast",d:"Rain is likely, so stay under a roof.",how:["Charge your phone and download your boarding pass."]},
+ {t:"9:30 AM",h:"Indoor stroll",d:"Venetian canals or the Forum Shops.",how:["The Venetian has painted skies and gondolas. The Forum Shops at Caesars are great for last gifts."],tags:["free"]},
+ {t:"10:45 AM",h:"Check out, ride to LAS",d:"Terminal 1. Arrive 2 hours early.",how:["Check out on the hotel app to skip the line.","Rideshare drop off is right at departures."]},
+ {t:"12:56 PM",h:"Fly home",d:"Nonstop, lands JFK 9:00 PM.",how:["Text the people who love you that you are on your way."],tags:["book"]}
+],swaps:[]}
+];
+const tagLabel={book:"Book ahead",free:"Free or cheap",splurge:"Splurge"};
+function toDate(day,t,z){const m=t.match(/(\d+):(\d+) (AM|PM)/);let h=+m[1]%12;if(m[3]==="PM")h+=12;return new Date(`${DATES[day]}T${String(h).padStart(2,"0")}:${m[2]}:00${z==="E"?"-05:00":"-08:00"}`)}
+const FLAT=[];DAYS.forEach(d=>d.items.forEach((it,k)=>FLAT.push({day:d.id,k,it,at:toDate(d.id,it.t,it.z)})));
+
+let doneMap=store.get("done",{}),curDay=store.get("day","fri"),openKey=null;
+function renderDays(){
+  $("days").innerHTML=DAYS.map(d=>`<button class="daybtn ${d.id===curDay?"on":""}" data-d="${d.id}"><div class="dw">${d.dw}</div><div class="dn">${d.dn}</div></button>`).join("");
+  document.querySelectorAll(".daybtn").forEach(b=>b.onclick=()=>{curDay=b.dataset.d;store.set("day",curDay);openKey=null;renderDays();renderDay()});
+}
+function renderDay(){
+  const d=DAYS.find(x=>x.id===curDay);
+  const done=d.items.filter((i,k)=>doneMap[d.id+k]).length;
+  const html=d.items.map((it,k)=>{const key=d.id+k;return `<div class="item ${openKey===key?"open":""} ${doneMap[key]?"done":""}" style="--i:${k}" data-k="${key}">
+    <div class="ihead"><div class="itime">${it.t}${it.z==="E"?" ET":""}</div><div class="ibody"><div class="ih">${it.h}</div><div class="id">${it.d}</div></div><div class="chev">›</div></div>
+    <div class="idet"><ol>${it.how.map(s=>`<li>${s}</li>`).join("")}</ol>
+    <div class="irow2">${(it.tags||[]).map(t=>`<span class="tag t-${t}">${tagLabel[t]}</span>`).join("")}${it.link?`<a class="btnl" href="${it.link[0]}" target="_blank" rel="noopener">${it.link[1]} ↗</a>`:""}<button class="donebtn" data-done="${key}">${doneMap[key]?"Done ✓":"Mark done"}</button></div></div></div>`}).join("");
+  const sw=d.swaps.length?`<details class="swaps"><summary>✦ Swap ideas for today (${d.swaps.length})</summary>${d.swaps.map(s=>`<div class="swap"><b>${s[0]}</b><p>${s[1]}</p>${s[2]?`<a href="${s[2]}" target="_blank" rel="noopener">More ↗</a>`:""}</div>`).join("")}</details>`:"";
+  $("dayview").innerHTML=`<div class="dayhead"><div><h3>${d.title}</h3><p>${d.sub}</p></div><div class="prog"><b>${done}/${d.items.length}</b>done</div></div><div class="tl">${html}</div>${sw}`;
+  document.querySelectorAll("#dayview .ihead").forEach(h=>h.onclick=()=>{const k=h.parentElement.dataset.k;openKey=openKey===k?null:k;renderDay()});
+  document.querySelectorAll("#dayview .donebtn").forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.done;doneMap[k]=!doneMap[k];store.set("done",doneMap);renderDay();renderNow()});
+}
+
+function renderNow(){
+  const now=new Date();let cur=null,nxt=null;
+  for(let i=0;i<FLAT.length;i++){if(FLAT[i].at<=now)cur=i;else{nxt=i;break}}
+  let html="";
+  if(cur===null){const f=FLAT[0];html=`<div class="lbl"><i></i>YOUR FIRST STEP</div><h3>${f.it.h}</h3><p>Friday at ${f.it.t} ET. ${f.it.d}</p><div class="next">Before then: open the <b>Book</b> tab and lock in the 5 things that sell out.</div><button class="go" data-open="${f.day}|${f.k}">See how ›</button>`}
+  else if(now>RET){html=`<div class="lbl"><i></i>TRIP COMPLETE</div><h3>Welcome home ✨</h3><p>Hope Vegas was everything. Rest up.</p>`}
+  else{const c=FLAT[cur];html=`<div class="lbl"><i></i>RIGHT NOW</div><h3>${c.it.h}</h3><p>${c.it.d}</p>${nxt!==null?`<div class="next">Up next at <b>${FLAT[nxt].it.t}</b>: ${FLAT[nxt].it.h}</div>`:""}<button class="go" data-open="${c.day}|${c.k}">How to do it ›</button>`}
+  $("now").innerHTML=html;
+  const g=document.querySelector("#now .go");if(g)g.onclick=()=>{const p=g.dataset.open.split("|");curDay=p[0];openKey=p[0]+p[1];showTab("plan");renderDays();renderDay()};
+}
+
+const HOT=[["SAHARA Las Vegas","8.4","North Strip, monorail stop out front. Best value.","$555","sahara-lasvegas-hotel-casino"],["Excalibur","7.6","South Strip. Cheapest real Strip address.","$343","excalibur"],["Luxor","7.3","The pyramid, free tram to Mandalay Bay.","$429","luxor"],["The LINQ","7.7","Dead center, steps from the zipline and wheel.","$843","the-linq-and-casino"],["Hilton at Resorts World","8.6","Newest and polished, north Strip.","$906","las-vegas-hilton-at-resorts-world"]];
+const hotelsHTML=`<div class="hotels">${HOT.map(h=>`<a class="hotel" target="_blank" rel="noopener" href="https://www.booking.com/hotel/us/${h[4]}.html?checkin=2026-11-27&checkout=2026-12-01&group_adults=1&no_rooms=1&selected_currency=USD"><div><h5>${h[0]}</h5><p><span class="score">${h[1]}</span>${h[2]}</p></div><div class="hp"><b>${h[3]}</b><small>4 NIGHTS</small></div></a>`).join("")}</div>`;
+const CHAP=[
+ ["✈️","Before you fly","Check in, ID, what to pack",["<b>Check in</b> on the American app 24 hours before the flight.","<b>Pack layers.</b> Days are high 60s, nights drop to the mid 40s, and Tuesday looks rainy.","<b>Shoes:</b> comfy walking shoes for the day (10 miles on the Strip is normal), sneakers for Red Rock, something cute for nights.","<b>Bring:</b> ID, one card plus a backup, a little cash for tips, a power bank, sunglasses, SPF and lip balm. The desert air is very dry.","Download your boarding pass and hotel confirmation so they work offline."]],
+ ["🛬","Landing at LAS","From the gate to your hotel",["You land at <b>Terminal 1</b>. Follow signs to Baggage Claim, then <b>Ground Transportation</b>.","For Uber or Lyft, follow the <b>Rideshare</b> signs to the pickup zone. Taxis wait at the taxi line outside baggage claim.","Always match the <b>license plate and driver name</b> before getting in.","Most Strip hotels are 15 to 25 minutes away. Early? The bell desk holds bags for free."]],
+ ["🏨","Where to stay","Picks with prices for your dates",["Booking.com totals for 4 nights, 1 adult, checked Nov 26. Resort fees are usually added on top.","Book soon. Monday night rates jump because a 60,000 person tech conference starts that day.",hotelsHTML]],
+ ["🚕","Getting around","Walking, monorail, rideshare",["<b>The Strip is bigger than it looks.</b> Two hotels that seem next door can be a 20 minute walk.","<b>Monorail:</b> runs on the east side from SAHARA to MGM Grand. Easy and safe.","<b>The Deuce bus</b> runs up and down the Strip 24/7.","<b>Rideshare:</b> every casino has a marked rideshare pickup area, usually by the garage. Follow the signs inside."]],
+ ["💵","Money & tipping","What to tip, resort fees, casino basics",["<b>Resort fees</b> are added per night at most Strip hotels. Already in your budget.","<b>Tipping:</b> bartenders $1 to $2 a drink, housekeeping $3 to $5 a night, rideshare about 15 to 20%, restaurants 18 to 20%.","<b>Casino:</b> sign up for the free players card at your hotel. It can unlock dining and show discounts.","Set a daily gambling limit, carry only that in cash, and leave cards in the room safe."]],
+ ["🎟️","Shows & tickets","Buying safely, arriving right",["Buy from the <b>official box office, venue website or Ticketmaster</b>. Avoid strangers selling tickets on the street.","Arrive <b>30 minutes early</b>. Big venues have security lines.","Check each venue's bag policy. A small bag is always safest.","Last minute? Ask at the box office in person. Single seats often turn up."]],
+ ["🏜️","Day trips","Grand Canyon, Red Rock, Hoover",["<b>Grand Canyon helicopter:</b> book a morning West Rim flight with hotel pickup. Wear layers and closed shoes and bring ID.","<b>Red Rock:</b> needs a timed entry reservation on recreation.gov for 8 AM to 5 PM. The scenic drive closes around 5 PM in winter.","<b>Hoover Dam:</b> the visitor center is open 9 to 5. Parking is $10 and the Power Plant tour is $15.","Carry water on every desert outing, even when it feels cool."]],
+ ["👗","What to wear","Day, night, desert",["<b>Daytime:</b> jeans or casual layers and a light jacket.","<b>Nights out:</b> clubs enforce dress codes, so dress up and skip athletic wear. Fold flats into your bag for the walk home.","<b>Desert days:</b> sneakers, sunglasses, a hat and a warm layer for the morning.","<b>Shows:</b> smart casual is perfect everywhere."]],
+ ["🛡️","Solo & safe","Simple habits that make it easy",["Share your <b>live location</b> with a friend for the whole trip.","Keep your drink in your hand and watch it being made. Never leave it alone.","Do not say your room number out loud. Ask the front desk for a new key if you lose one.","Stick to busy, lit areas at night. The Strip and Fremont Street are full of people and security.","Casino security staff are everywhere and happy to help. In an emergency, call 911."]],
+ ["🍽️","Eat well","Six easy favorites",["<b>Tacos El Gordo:</b> cheap, famous, great late at night.","<b>Peppermill:</b> neon diner since 1972, big portions.","<b>Lotus of Siam:</b> legendary northern Thai. Try the khao soi.","<b>Bacchanal Buffet:</b> Caesars Palace, the most famous buffet in town.","<b>Eataly:</b> Park MGM, easy solo counter seats.","<b>Esther's Kitchen:</b> Arts District favorite for pasta."]],
+ ["🏠","Heading home","Checkout and the airport",["Check out on your hotel app to skip the line. The bell desk can hold bags if you want a last wander.","Leave for <b>LAS Terminal 1</b> at least 2 hours before your flight.","Rideshare drop off is right at departures."]]
+];
+let readMap=store.get("read",{}),openChap=null;
+function renderGuide(){
+  const n=CHAP.filter((c,i)=>readMap[i]).length;
+  $("ringtxt").textContent=n+"/"+CHAP.length;$("ringfg").style.strokeDashoffset=207.3*(1-n/CHAP.length);
+  $("chapters").innerHTML=CHAP.map((c,i)=>`<div class="chap ${openChap===i?"open":""} ${readMap[i]?"read":""}" style="--i:${i}"><div class="chead" data-c="${i}"><div class="cnum">${readMap[i]?"✓":c[0]}</div><div class="ctitle"><b>${c[1]}</b><small>${c[2]}</small></div><div class="chev">›</div></div><div class="cbody"><ul>${c[3].map(x=>x.startsWith("<div")?x:`<li>${x}</li>`).join("")}</ul><button class="readbtn" data-r="${i}">${readMap[i]?"Read ✓":"Mark as read"}</button></div></div>`).join("");
+  document.querySelectorAll(".chead").forEach(h=>h.onclick=()=>{const i=+h.dataset.c;openChap=openChap===i?null:i;renderGuide()});
+  document.querySelectorAll(".readbtn").forEach(b=>b.onclick=()=>{const i=+b.dataset.r;readMap[i]=!readMap[i];store.set("read",readMap);if(readMap[i])openChap=null;renderGuide()});
+}
+
+const TOURS=[
+ ["Sky","Grand Canyon Helicopter","Canyon floor landing and champagne, Hoover Dam from the air.","from ~$439","https://papillon.com",1],
+ ["Desert","Grand Canyon Bus Day","Eagle Point, Guano Point and the glass Skywalk option.","~$150 to $300","https://www.google.com/search?q=Grand+Canyon+West+Rim+day+tour+from+Las+Vegas"],
+ ["Sky","Night Strip Helicopter","A short flight over the lit up Strip. Unforgettable views.","varies","https://www.google.com/search?q=Las+Vegas+Strip+night+helicopter+flight"],
+ ["Desert","Red Rock Canyon","Red cliffs, a 13 mile scenic loop and easy hikes.","~$20 per car","https://www.recreation.gov/timed-entry/10075177"],
+ ["Desert","Hoover Dam","Walk the dam and the bridge 900 ft above the river.","$10 parking","https://www.usbr.gov/lc/hooverdam/"],
+ ["Desert","Valley of Fire","Fire red rock waves, an hour northeast. Bring water.","park fee","https://parks.nv.gov/parks/valley-of-fire"],
+ ["Thrill","Fly LINQ Zipline","Seated zip 12 stories over the LINQ Promenade.","from ~$44","https://www.google.com/search?q=Fly+LINQ+zipline"],
+ ["Thrill","Indoor Skydiving","Fly in a wind tunnel. No plane needed.","varies","https://www.google.com/search?q=Vegas+Indoor+Skydiving"],
+ ["Night","Neon Museum","Glowing retired casino signs after dark.","varies","https://www.neonmuseum.org"],
+ ["Indoor","Mob Museum","Vegas history with a speakeasy downstairs.","varies","https://themobmuseum.org"]
+];
+const WEEK=[["Fri & Sat","8:30 PM","Eagles at Sphere","Final 2026 run of their record residency.",""],["Fri & Sat","8:00 PM","LISA · VIVA LA LISA","First ever K pop Vegas residency at Caesars Palace. Resale only.",""],["Sat 28","1:00 PM","Golden Knights vs Canadiens","NHL matinee at T Mobile Arena.","teal"],["Sat 28","6:00 PM","UNLV vs Nevada","Fremont Cannon rivalry at Allegiant. From ~$45.","teal"],["Sat 28","10:30 PM","Sidepiece at LIV","Saturday headliner at Fontainebleau.",""],["Mon 30","7:00 PM","Wizard of Oz at Sphere","Daytime screenings Fri to Sun too. ~$114 to $145.",""]];
+const RES=[["Cirque","O","Bellagio's water show. The one to see.","from ~$116"],["Cirque","KÀ","MGM Grand. Martial arts on a spinning stage.","from ~$64"],["Cirque","Mystère","Treasure Island. The original, great value.","from ~$65"],["Cirque","Michael Jackson ONE","Mandalay Bay. Dance and acrobatics.","varies"],["Comedy","Absinthe","Caesars Palace. Cheeky, adults only.","varies"],["Magic","Shin Lim","Palazzo Theatre. Close up magic.","varies"]];
+const HOL=[["24/7","FREE","Bellagio Conservatory","Postcards from Christmas: a holiday train and winter scenes under glass.","teal"],["Nightly","5 to 10 PM","Ethel M Cactus Garden","Over a million lights in Henderson.",""],["Nightly","to Jan 3","Glittering Lights","6 million lights on a 3 mile drive thru. Needs a car.",""],["Seasonal","Rooftop","Cosmopolitan Ice Rink","Real ice over the Strip. Usually opens around Thanksgiving; confirm first.","teal"]];
+let seg="tours";
+const tk=(w,i)=>`<div class="ticket ${w[4]}" style="--i:${i}"><div class="when"><b>${w[0]}</b><small>${w[1]}</small></div><div class="what"><h4>${w[2]}</h4><p>${w[3]}</p></div></div>`;
+function renderExplore(){
+  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.s===seg));
+  let h="";
+  if(seg==="tours")h=`<div class="grid">${TOURS.map((t,i)=>`<div class="card" style="--i:${i}">${t[5]?'<div class="ribbon">TOP PICK</div>':""}<div class="cat">${t[0]}</div><h4>${t[1]}</h4><p>${t[2]}</p><div class="row"><span class="pr">${t[3]}</span><a href="${t[4]}" target="_blank" rel="noopener">Book ↗</a></div></div>`).join("")}</div>`;
+  if(seg==="shows")h=`<p class="lede">On this weekend only</p>${WEEK.map(tk).join("")}<h2 class="h2">Always <em>On</em></h2><div class="grid">${RES.map((r,i)=>`<div class="card" style="--i:${i}"><div class="cat">${r[0]}</div><h4>${r[1]}</h4><p>${r[2]}</p><div class="row"><span class="pr">${r[3]}</span><a href="https://www.google.com/search?q=${encodeURIComponent(r[1]+" Las Vegas tickets")}" target="_blank" rel="noopener">Tickets ↗</a></div></div>`).join("")}</div><div class="note">Mad Apple at New York New York closed in September 2026, so skip any old listings for it.</div>`;
+  if(seg==="lights")h=HOL.map(tk).join("");
+  $("exview").innerHTML=h;
+}
+document.querySelectorAll("#seg button").forEach(b=>b.onclick=()=>{seg=b.dataset.s;renderExplore()});
+
+const BOOK=[["Hotel for Nov 27 to Dec 1","See Guide › Where to stay"],["Grand Canyon flight for Sunday morning","Hotel pickup included"],["Friday show","Eagles, LISA or O"],["Red Rock timed entry, Mon 8:30 AM","recreation.gov"],["Wizard of Oz at Sphere, Mon 7 PM",""],["Optional: Golden Knights Sat, Absinthe Sun, rental car Mon",""]];
+let checks=store.get("checks",{});
+function renderBook(){
+  $("booklist").innerHTML=BOOK.map((c,i)=>`<label class="citem ${checks[i]?"on":""}"><input type="checkbox" class="check" data-k="${i}" ${checks[i]?"checked":""}><span>${c[0]}${c[1]?`<small>${c[1]}</small>`:""}</span></label>`).join("");
+  document.querySelectorAll("#booklist .check").forEach(c=>c.onchange=()=>{checks[c.dataset.k]=c.checked;store.set("checks",checks);c.closest(".citem").classList.toggle("on",c.checked)});
+}
+const BDEF=[["Flights","Round trip nonstop",437,"#ff3d8b"],["Hotel","4 nights, SAHARA estimate",555,"#c2307a"],["Resort fees","Estimate",180,"#8f2a68"],["Grand Canyon helicopter","Sunday",499,"#2ef2d0"],["Friday show","Eagles, LISA or O",175,"#f6c453"],["Wizard of Oz at Sphere","Monday",135,"#e0a83a"],["Absinthe","Sunday",120,"#c78b26"],["Golden Knights","Saturday",110,"#a8711a"],["Rental car + gas","Monday",90,"#21b8a0"],["Park & dam fees","Red Rock, Hoover",50,"#178a78"],["Food & drinks","5 days",450,"#7d6bd6"],["Rideshares","Airport and nights",180,"#5d4fb0"],["Attractions","Zipline, AREA15, extras",140,"#43378a"],["Fun money","Shopping, games",250,"#ffffff"]];
+let bvals=store.get("budget",BDEF.map(b=>b[2]));if(bvals.length!==BDEF.length)bvals=BDEF.map(b=>b[2]);
+function renderBudget(){
+  $("blines").innerHTML=BDEF.map((b,i)=>`<div class="bline"><span class="sw" style="background:${b[3]}"></span><label for="b${i}">${b[0]}<small>${b[1]}</small></label><input id="b${i}" type="number" inputmode="numeric" min="0" step="5" value="${bvals[i]}"></div>`).join("");
+  document.querySelectorAll(".bline input").forEach((inp,i)=>inp.oninput=()=>{bvals[i]=Math.max(0,parseFloat(inp.value)||0);store.set("budget",bvals);sumBudget()});
+  sumBudget();
+}
+function sumBudget(){const t=bvals.reduce((a,b)=>a+b,0);$("btotal").textContent="$"+Math.round(t).toLocaleString();$("bper").textContent="about $"+Math.round(t/5).toLocaleString()+" a day";$("bbar").innerHTML=BDEF.map((b,i)=>`<i style="width:${t?bvals[i]/t*100:0}%;background:${b[3]}"></i>`).join("")}
+$("breset").onclick=()=>{bvals=BDEF.map(b=>b[2]);store.set("budget",bvals);renderBudget()};
+
+function showTab(t){
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.t===t));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===t));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>showTab(t.dataset.t));
+document.querySelectorAll(".qc").forEach(q=>q.onclick=()=>showTab(q.dataset.go));
+
+const OB=[["🌵","Welcome"+(who?", "+who:"")+"!","This is your whole Vegas trip in one place. No stress, no planning needed."],["✨","Home shows Now & Next","During the trip, the Home screen always tells you what is happening now and what is coming up."],["🧭","Tap anything for the how","Every stop in the Plan opens into simple steps, and the Guide answers everything else."]];
+let obi=0;
+function renderOB(){$("obe").textContent=OB[obi][0];$("obt").textContent=OB[obi][1];$("obp").textContent=OB[obi][2];$("obd").innerHTML=OB.map((o,i)=>`<i class="${i===obi?"on":""}"></i>`).join("");$("obn").textContent=obi===OB.length-1?"Let's go":"Next"}
+function closeOB(){$("ob").classList.remove("show");store.set("ob",1)}
+$("obn").onclick=()=>{if(obi<OB.length-1){obi++;renderOB()}else closeOB()};
+$("obs").onclick=closeOB;
+if(!store.get("ob",0)){renderOB();$("ob").classList.add("show")}
+
+tick();setInterval(tick,1000);
+renderNow();setInterval(renderNow,60000);
+renderDays();renderDay();renderGuide();renderExplore();renderBook();renderBudget();
+</script>
+</body>
+</html>
